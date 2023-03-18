@@ -25,7 +25,9 @@ uploadBtn.addEventListener('click', () => {
     const workbook = XLSX.read(data, {type: 'array'});
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
     const json = XLSX.utils.sheet_to_json(sheet);
-    const table = document.createElement('table');
+    const table = document.createElement('table')
+    table.setAttribute('id', 'templateTable');
+    table.setAttribute('style','border:1px solid black;')
 
     // create header row
     const header = table.createTHead().insertRow();
@@ -52,4 +54,18 @@ uploadBtn.addEventListener('click', () => {
   };
   
   reader.readAsArrayBuffer(selectedFile);
+  setTimeout(function() {
+    tableHandler();
+  }, 1000); 
 });
+
+
+function tableHandler() {
+    let cells = document.getElementById('templateTable').rows;
+
+    for (var i = 0; i < cells.length; i++) {
+        cells[i].addEventListener('click', function (event) {
+            console.log(i);
+        })
+    }
+}
