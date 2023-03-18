@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!----------- Header explaining the steps required to have this program run as intended --------------->
     <header>
         <div>
             <h1>Advanced Excel-file Merger</h1>
@@ -27,18 +28,24 @@
             </div>
         </div>
     </header>
-    
+
+    <!------------ File selection and choises for merge alternatives section ----------------->
     <section>
+        <!-- First user choses a template file that is restricted to excelfiles only and one file choise -->
         <div class="file-selectors">
-            <input type="file" id="template-file-selector" accept=".xls, .xlsx .xlsm, .xltx">
+            <input type="file" id="template-file-selector" accept=".xls, .xlsx, .xlsm, .xltx">
         </div>
+        <!-- Display the upploaded template file -->
         <div id="template-file">
 
         </div>
+        <!-- Merge options -->
         <div id="merge-options">
+            <!-- Show choises picked from the template file -->
             <div id="template-choises">
 
             </div>
+            <!-- User choses what they want to do with the cells that they have picked -->
             <div>
                 <input list="merge-alternatives" placeholder="Chose merge option here">
                 <datalist id="merge-alternatives">
@@ -51,15 +58,17 @@
         </div>
     </section>
 
+    <!----------- Preview section to verify that the options they chose corresponds to their wishes -------------->
     <section>
         <div id="preview-window">
 
         </div>
     </section>
 
+    <!--------- User picks the files that they want to apply the merge program to with run program button and progress bar --------->
     <section>
         <div class="file-selectors">
-            <input type="file" id="file-selector" accept=".xls, .xlsx .xlsm, .xltx" multiple>
+            <input type="file" id="file-selector" accept=".xls, .xlsx, .xlsm, .xltx" multiple>
         </div>
         <div>
 
