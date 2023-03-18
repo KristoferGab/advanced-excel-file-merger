@@ -8,7 +8,63 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <header>
+        <div>
+            <h1>Advanced Excel-file Merger</h1>
+        </div>
+        <div>
+            <div>
+                <h2>Step1</h2>
+            </div>
+            <div>
+                <h2>Step2</h2>
+            </div>
+            <div>
+                <h2>Step3</h2>
+            </div>
+            <div>
+                <h2>Step4</h2>
+            </div>
+        </div>
+    </header>
     
+    <section>
+        <div class="file-selectors">
+            <input type="file" id="template-file-selector" accept=".xls, .xlsx .xlsm, .xltx">
+        </div>
+        <div id="template-file">
+
+        </div>
+        <div id="merge-options">
+            <div id="template-choises">
+
+            </div>
+            <div>
+                <input list="merge-alternatives" placeholder="Chose merge option here">
+                <datalist id="merge-alternatives">
+                    <option value="Addition"></option>
+                    <option value="Subtraction"></option>
+                    <option value="Multiply"></option>
+                    <option value="Division"></option>
+                </datalist>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div id="preview-window">
+
+        </div>
+    </section>
+
+    <section>
+        <div class="file-selectors">
+            <input type="file" id="file-selector" accept=".xls, .xlsx .xlsm, .xltx" multiple>
+        </div>
+        <div>
+
+        </div>
+    </section>
 
     <script src="assets/js/script.js"></script>
 </body>
