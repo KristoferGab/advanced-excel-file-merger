@@ -1,31 +1,55 @@
 
 // Exempel code copied from https://code-boxx.com/javascript-excel-html-table/ for test and reference.
-document.getElementById("demoA").onchange = (evt) => {
-    // (A) NEW FILE READER
-    var reader = new FileReader();
-   
-    // (B) ON FINISH LOADING
-    reader.addEventListener("loadend", (evt) => {
-      // (B1) GET HTML TABLE
-      var table = document.getElementById("demoB");
-      table.innerHTML = "";
-   
-      // (B2) GET THE FIRST WORKSHEET
-      var workbook = XLSX.read(evt.target.result, {type: "binary"}),
-          worksheet = workbook.Sheets[workbook.SheetNames[0]],
-          range = XLSX.utils.decode_range(worksheet["!ref"]);
-   
-      // (B3) READ EXCEL CELLS & INSERT ROWS/COLUMNS
-      for (let row=range.s.r; row<=range.e.r; row++) {
-        let r = table.insertRow();
-        for (let col=range.s.c; col<=range.e.c; col++) {
-          let c = r.insertCell(),
-          xcell = worksheet[XLSX.utils.encode_cell({r:row, c:col})];
-          c.innerHTML = xcell.v;
-        }
-      }
+
+const fileInput = document.getElementById('template-file-selector');
+const uploadBtn = document.getElementById('template-upload');
+const output = document.getElementById('template-file');
+
+let selectedFile;
+
+fileInput.addEventListener('change', (event) => {
+  // set the selectedFile variable to the chosen file
+  selectedFile = event.target.files[0];
+});
+
+uploadBtn.addEventListener('click', () => {
+  if (!selectedFile) {
+    alert('Please select a file first!');
+    return;
+  }
+
+  const reader = new FileReader();
+  
+  reader.onload = (event) => {
+    const data = new Uint8Array(event.target.result);
+    const workbook = XLSX.read(data, {type: 'array'});
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const json = XLSX.utils.sheet_to_json(sheet);
+    const table = document.createElement('table');
+
+    // create header row
+    const header = table.createTHead().insertRow();
+    Object.keys(json[0]).forEach(key => {
+      const cell = header.insertCell();
+      cell.textContent = key;
     });
-   
-    // (C) START - READ SELECTED EXCEL FILE
-    reader.readAsArrayBuffer(evt.target.files[0]);
+
+    // create data rows
+    const tbody = document.createElement('tbody');
+    for (let i = 0; i < json.length; i++) {
+      const rowData = json[i];
+      const row = tbody.insertRow();
+      Object.values(rowData).forEach(value => {
+        const cell = row.insertCell();
+        cell.textContent = value;
+      });
+    }
+
+    // add table to output div
+    table.appendChild(tbody);
+    output.innerHTML = '';
+    output.appendChild(table);
   };
+  
+  reader.readAsArrayBuffer(selectedFile);
+});
