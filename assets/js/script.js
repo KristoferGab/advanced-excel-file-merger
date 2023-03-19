@@ -69,13 +69,31 @@ uploadBtn.addEventListener('click', () => {
 // Function to set eventlistener on all tabledata and retrieve the clicked cell from ecent object on uploaded excelfile
 // Code copied from https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click : credit to Teemu!
 function tableHandler() {
+  let tableArray = []
   const tbody = document.querySelector('#templateTable tbody');
   tbody.addEventListener('click', function (e) {
     const cell = e.target.closest('td');
     if (!cell) {return;} // Quit, not clicked on a cell
     const row = cell.parentElement;
     console.log(cell.innerHTML, row.rowIndex, cell.cellIndex);
-    cell.style.backgroundColor = "red";
-    cell.style.borderColor = "green";
+
+    if (cell.style.backgroundColor !== "lightgreen") {
+      cell.style.border = "2px solid green";
+      cell.style.backgroundColor = "lightgreen";
+      let tableObject = {cellvalue: cell.innerHTML, rowindex: row.rowIndex, 
+          cellindex: cell.cellIndex, cellID: row.rowIndex.toString() + cell.cellIndex.toString()};
+      tableArray.push(tableObject);
+      console.log(tableArray);
+      
+    } else if (cell.style.backgroundColor === "lightgreen") {
+      cell.style.border = "1px solid black";
+      cell.style.backgroundColor = "white";
+      // Find the deselected cell and remove it from array. Credit to Peter Mortensen on https://stackoverflow.com/questions/21659888/find-and-remove-objects-in-an-array-based-on-a-key-value-in-javascript
+      let cellID = row.rowIndex.toString() + cell.cellIndex.toString();
+      tableArray = tableArray.filter(function( obj ) {
+        return obj.cellID !== cellID;
+      })
+    }
+    
   });
 }
