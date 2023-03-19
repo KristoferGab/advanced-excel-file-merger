@@ -1,9 +1,12 @@
 
 // Exempel code copied from https://code-boxx.com/javascript-excel-html-table/ for test and reference.
+// Combined code from https://docs.sheetjs.com/docs/getting-started/installation/standalone
+//https://www.webslesson.info/2021/07/how-to-display-excel-data-in-html-table.html
+//https://web.dev/read-files/#read-content
 
-const fileInput = document.getElementById('template-file-selector');
-const uploadBtn = document.getElementById('template-upload');
-const output = document.getElementById('template-file');
+let fileInput = document.getElementById('template-file-selector');
+let uploadBtn = document.getElementById('template-upload');
+let output = document.getElementById('template-file');
 
 let selectedFile;
 
@@ -18,32 +21,33 @@ uploadBtn.addEventListener('click', () => {
     return;
   }
 
-  const reader = new FileReader();
+  let reader = new FileReader();
   
   reader.onload = (event) => {
-    const data = new Uint8Array(event.target.result);
-    const workbook = XLSX.read(data, {type: 'array'});
-    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-    const json = XLSX.utils.sheet_to_json(sheet);
-    const table = document.createElement('table')
+    let data = new Uint8Array(event.target.result);
+    let workbook = XLSX.read(data, {type: 'array'});
+    let sheet = workbook.Sheets[workbook.SheetNames[0]];
+    let json = XLSX.utils.sheet_to_json(sheet);
+    let table = document.createElement('table')
     table.setAttribute('id', 'templateTable');
     table.setAttribute('style','border:1px solid black;')
 
     // create header row
-    const header = table.createTHead().insertRow();
+    let header = table.createTHead().insertRow();
     Object.keys(json[0]).forEach(key => {
-      const cell = header.insertCell();
+      let cell = header.insertCell();
       cell.textContent = key;
     });
 
     // create data rows
-    const tbody = document.createElement('tbody');
+    let tbody = document.createElement('tbody');
     for (let i = 0; i < json.length; i++) {
-      const rowData = json[i];
-      const row = tbody.insertRow();
+      let rowData = json[i];
+      let row = tbody.insertRow();
       Object.values(rowData).forEach(value => {
-        const cell = row.insertCell();
+        let cell = row.insertCell();
         cell.textContent = value;
+        cell.setAttribute('style','border:1px solid black;')
       });
     }
 
@@ -54,18 +58,24 @@ uploadBtn.addEventListener('click', () => {
   };
   
   reader.readAsArrayBuffer(selectedFile);
+
+  // Call function to apply eventlistener with a set time-out of 1sec to make sure the table is complete first
+  // Credit to https://stackoverflow.com/questions/5990725/how-to-delay-execution-in-between-the-following-in-my-javascript : Credit to T.J. Crowder
   setTimeout(function() {
     tableHandler();
   }, 1000); 
 });
 
-
+// Function to set eventlistener on all tabledata and retrieve the clicked cell from ecent object on uploaded excelfile
+// Code copied from https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click : credit to Teemu!
 function tableHandler() {
-    let cells = document.getElementById('templateTable').rows;
-
-    for (var i = 0; i < cells.length; i++) {
-        cells[i].addEventListener('click', function (event) {
-            console.log(i);
-        })
-    }
+  const tbody = document.querySelector('#templateTable tbody');
+  tbody.addEventListener('click', function (e) {
+    const cell = e.target.closest('td');
+    if (!cell) {return;} // Quit, not clicked on a cell
+    const row = cell.parentElement;
+    console.log(cell.innerHTML, row.rowIndex, cell.cellIndex);
+    cell.style.backgroundColor = "red";
+    cell.style.borderColor = "green";
+  });
 }
