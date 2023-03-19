@@ -3,7 +3,7 @@
 // Combined code from https://docs.sheetjs.com/docs/getting-started/installation/standalone
 //https://www.webslesson.info/2021/07/how-to-display-excel-data-in-html-table.html
 //https://web.dev/read-files/#read-content
-
+//Uses the library provided by https://sheetjs.com/
 let fileInput = document.getElementById('template-file-selector');
 let uploadBtn = document.getElementById('template-upload');
 let output = document.getElementById('template-file');
@@ -76,7 +76,8 @@ function tableHandler() {
     if (!cell) {return;} // Quit, not clicked on a cell
     const row = cell.parentElement;
     console.log(cell.innerHTML, row.rowIndex, cell.cellIndex);
-
+    let cellID = row.rowIndex.toString() + cell.cellIndex.toString();
+    // Changing color on selected or deselected cells and creating array with selected cells as objects.
     if (cell.style.backgroundColor !== "lightgreen") {
       cell.style.border = "2px solid green";
       cell.style.backgroundColor = "lightgreen";
@@ -84,7 +85,9 @@ function tableHandler() {
           cellindex: cell.cellIndex, cellID: row.rowIndex.toString() + cell.cellIndex.toString()};
       tableArray.push(tableObject);
       console.log(tableArray);
-      
+      //Function to display cell value choises
+      displayTableSelections(cell.innerHTML, cellID);
+      // If cell is deselected make sure to remove object from array and change back color.
     } else if (cell.style.backgroundColor === "lightgreen") {
       cell.style.border = "1px solid black";
       cell.style.backgroundColor = "white";
@@ -93,7 +96,22 @@ function tableHandler() {
       tableArray = tableArray.filter(function( obj ) {
         return obj.cellID !== cellID;
       })
+      // Remove h4 element connected to the cellID
+      let h4Element = document.getElementById(cellID);
+      h4Element.remove();
     }
     
   });
 }
+
+// Display the selected cells as h4 elements with its cell value
+function displayTableSelections(cellValue, ID) {
+    let templateChoises = document.getElementById('template-choises');
+    let selectedValue = document.createElement('h4');
+    selectedValue.setAttribute('id', ID)
+    selectedValue.innerHTML = cellValue;
+    console.log(selectedValue);
+    console.log(cellValue);
+    templateChoises.appendChild(selectedValue);
+}
+
