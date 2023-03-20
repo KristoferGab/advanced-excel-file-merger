@@ -115,3 +115,60 @@ function displayTableSelections(cellValue, ID) {
     templateChoises.appendChild(selectedValue);
 }
 
+function openMultipleFiles() {
+
+  // Define an empty array to store the data from all the files
+  var dataArr = [];
+
+  // Loop through each file input element and retrieve the selected files
+  var fileInputs = document.querySelectorAll('input[type="file"]');
+  for (var i = 0; i < fileInputs.length; i++) {
+    var files = fileInputs[i].files;
+    for (var j = 0; j < files.length; j++) {
+      var file = files[j];
+
+      // Use the FileReader API to read the file as a binary string
+      var reader = new FileReader();
+      reader.onload = function(e) {
+
+        // Convert the binary string to an array buffer
+        var data = new Uint8Array(e.target.result);
+        
+        // Use the XLSX.js library to parse the array buffer into a JSON object
+        var workbook = XLSX.read(data, {type: 'string'});
+        var sheet_name_list = workbook.SheetNames;
+        var json_data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+
+        // Add the extracted data to the data array
+        dataArr.push(json_data);
+        console.log(dataArr);
+
+        // Get a reference to the HTML table element where we want to display the data
+        var table = document.getElementById('merged-table');
+
+        // Loop through each row of data in the data array and create a new row in the HTML table
+        for (var i = 0; i < dataArr.length; i++) {
+          var rowData = dataArr[i];
+          var row = document.createElement('tr');
+          console.log(row);
+
+          // Loop through each column of data in the row and create a new table cell
+          for (var j = 0; j < rowData.length; j++) {
+            var cellData = rowData[j];
+            var cell = document.createElement('td');
+            cell.textContent = cellData;
+            console.log(cell);
+            row.appendChild(cell);
+          }
+
+          // Add the row to the HTML table
+          
+          
+          table.appendChild(row);
+        }
+
+      };
+      reader.readAsArrayBuffer(file);
+    }
+  }
+}

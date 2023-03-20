@@ -69,11 +69,13 @@
     <!--------- User picks the files that they want to apply the merge program to with run program button and progress bar --------->
     <section>
         <div class="file-selectors">
-            <input type="file" id="file-selector" accept=".xls, .xlsx, .xlsm, .xltx" multiple>
-            <button class="btn" id="merge-btn">Let's Merge!</button>
+            <input type="file" id="multi-files-selector" accept=".xls, .xlsx, .xlsm, .xltx" multiple>
+            <button class="btn" id="merge-btn" onclick="openMultipleFiles()">Let's Merge!</button>
         </div>
         <div>
+            <table id="merged-table">
 
+            </table>
         </div>
     </section>
 
