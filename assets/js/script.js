@@ -115,60 +115,53 @@ function displayTableSelections(cellValue, ID) {
     templateChoises.appendChild(selectedValue);
 }
 
-function openMultipleFiles() {
 
-  // Define an empty array to store the data from all the files
-  var dataArr = [];
+document.addEventListener('DOMContentLoaded', function() { // Wait for HTML to finish loading
+  // Define the cell locations that contain the data to be read
+  const dataLocations = [
+    { filename: '', row: 2, col: 1 }, // Example data location for filename
+    { filename: '', row: 3, col: 2 } // Example data location for filename
+  ];
 
-  // Loop through each file input element and retrieve the selected files
-  var fileInputs = document.querySelectorAll('input[type="file"]');
-  for (var i = 0; i < fileInputs.length; i++) {
-    var files = fileInputs[i].files;
-    for (var j = 0; j < files.length; j++) {
-      var file = files[j];
+  // Set up event listener for file input
+  const filesInput = document.getElementById('multi-files-selector');
+  filesInput.addEventListener('change', handleFilesInput);
 
-      // Use the FileReader API to read the file as a binary string
-      var reader = new FileReader();
-      reader.onload = function(e) {
-
-        // Convert the binary string to an array buffer
-        var data = new Uint8Array(e.target.result);
-        
-        // Use the XLSX.js library to parse the array buffer into a JSON object
-        var workbook = XLSX.read(data, {type: 'string'});
-        var sheet_name_list = workbook.SheetNames;
-        var json_data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-
-        // Add the extracted data to the data array
-        dataArr.push(json_data);
-        console.log(dataArr);
-
-        // Get a reference to the HTML table element where we want to display the data
-        var table = document.getElementById('merged-table');
-
-        // Loop through each row of data in the data array and create a new row in the HTML table
-        for (var i = 0; i < dataArr.length; i++) {
-          var rowData = dataArr[i];
-          var row = document.createElement('tr');
-          console.log(row);
-
-          // Loop through each column of data in the row and create a new table cell
-          for (var j = 0; j < rowData.length; j++) {
-            var cellData = rowData[j];
-            var cell = document.createElement('td');
-            cell.textContent = cellData;
-            console.log(cell);
-            row.appendChild(cell);
-          }
-
-          // Add the row to the HTML table
-          
-          
-          table.appendChild(row);
-        }
-
-      };
-      reader.readAsArrayBuffer(file);
+  function handleFilesInput(e) {
+    const files = e.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const workbook = XLSX.read(event.target.result, { type: 'binary' });
+        displayExcelData(workbook, file.name);
+      }
+      reader.readAsBinaryString(file);
     }
   }
-}
+
+  function displayExcelData(workbook, filename) {
+    // Create table header
+    const table = document.getElementById('merged-table');
+    const headerRow = document.createElement('tr');
+    headerRow.innerHTML = `<th>${filename}</th>`;
+    dataLocations.forEach(loc => {
+      headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
+    });
+    table.appendChild(headerRow);
+
+    // Loop through data locations and retrieve data from specified location
+    dataLocations.forEach(loc => {
+      const sheetName = workbook.SheetNames[0];
+      const sheet = workbook.Sheets[sheetName];
+      const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
+      const cell = sheet[cellAddress];
+      const value = cell ? cell.v : null;
+
+      // Create table row for data
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${value}</td>`;
+      table.appendChild(row);
+    });
+  }
+});
