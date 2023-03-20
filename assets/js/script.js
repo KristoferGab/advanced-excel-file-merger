@@ -165,3 +165,19 @@ document.addEventListener('DOMContentLoaded', function() { // Wait for HTML to f
     });
   }
 });
+
+
+
+
+let downloadBtn = document.getElementById('download-btn');
+  downloadBtn.addEventListener('click', Table2XLSX);
+/* Create worksheet from HTML DOM TABLE */
+function Table2XLSX() {
+
+  const table = document.getElementById("merged-table");
+  const wb = XLSX.utils.table_to_book(table);
+
+  /* Export to file (start a download) */
+  XLSX.writeFile(wb, "AEFMerger.xlsx");
+
+}
