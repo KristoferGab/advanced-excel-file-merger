@@ -1,9 +1,11 @@
 
-// Exempel code copied from https://code-boxx.com/javascript-excel-html-table/ for test and reference.
-// Combined code from https://docs.sheetjs.com/docs/getting-started/installation/standalone
-//https://www.webslesson.info/2021/07/how-to-display-excel-data-in-html-table.html
-//https://web.dev/read-files/#read-content
-//Uses the library provided by https://sheetjs.com/
+/**
+ * Exempel code copied from https://code-boxx.com/javascript-excel-html-table/ for test and reference.
+ * Combined code from https://docs.sheetjs.com/docs/getting-started/installation/standalone
+ * https://www.webslesson.info/2021/07/how-to-display-excel-data-in-html-table.html
+ * https://web.dev/read-files/#read-content
+ * Uses the library provided by https://sheetjs.com/
+**/ 
 let fileInput = document.getElementById('template-file-selector');
 let uploadBtn = document.getElementById('template-upload');
 let output = document.getElementById('template-file');
@@ -66,10 +68,10 @@ uploadBtn.addEventListener('click', () => {
   }, 1000); 
 });
 
+let tableArray =  [];
 // Function to set eventlistener on all tabledata and retrieve the clicked cell from ecent object on uploaded excelfile
 // Code copied from https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click : credit to Teemu!
 function tableHandler() {
-  let tableArray = []
   const tbody = document.querySelector('#templateTable tbody');
   tbody.addEventListener('click', function (e) {
     const cell = e.target.closest('td');
@@ -82,7 +84,7 @@ function tableHandler() {
       cell.style.border = "2px solid green";
       cell.style.backgroundColor = "lightgreen";
       let tableObject = {cellvalue: cell.innerHTML, rowindex: row.rowIndex, 
-          cellindex: cell.cellIndex, cellID: row.rowIndex.toString() + cell.cellIndex.toString()};
+          cellindex: cell.cellIndex, cellID: row.rowIndex.toString() + cell.cellIndex.toString()}; //not unique!
       tableArray.push(tableObject);
       console.log(tableArray);
       //Function to display cell value choises
@@ -100,7 +102,6 @@ function tableHandler() {
       let h4Element = document.getElementById(cellID);
       h4Element.remove();
     }
-    
   });
 }
 
@@ -116,64 +117,69 @@ function displayTableSelections(cellValue, ID) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() { // Wait for HTML to finish loading
-  // Define the cell locations that contain the data to be read
-  const dataLocations = [
-    { filename: '', row: 2, col: 1 }, // Example data location for filename
-    { filename: '', row: 3, col: 2 } // Example data location for filename
-  ];
 
-  // Set up event listener for file input
-  const filesInput = document.getElementById('multi-files-selector');
-  filesInput.addEventListener('change', handleFilesInput);
 
-  function handleFilesInput(e) {
-    const files = e.target.files;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-      reader.onload = function(event) {
-        const workbook = XLSX.read(event.target.result, { type: 'binary' });
-        displayExcelData(workbook, file.name);
-      }
-      reader.readAsBinaryString(file);
+// Set up event listener for file input
+const filesInput = document.getElementById('multi-files-selector');
+filesInput.addEventListener('change', handleFilesInput);
+
+function handleFilesInput(e) {
+  const files = e.target.files;
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      const workbook = XLSX.read(event.target.result, { type: 'binary' });
+      displayExcelData(workbook, file.name);
     }
+    reader.readAsBinaryString(file);
   }
+}
 
-  function displayExcelData(workbook, filename) {
-    // Create table header
-    const table = document.getElementById('merged-table');
-    const headerRow = document.createElement('tr');
-    headerRow.innerHTML = `<th>${filename}</th>`;
-    dataLocations.forEach(loc => {
-      headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
-    });
-    table.appendChild(headerRow);
-
-    // Loop through data locations and retrieve data from specified location
-    dataLocations.forEach(loc => {
-      const sheetName = workbook.SheetNames[0];
-      const sheet = workbook.Sheets[sheetName];
-      const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
-      const cell = sheet[cellAddress];
-      const value = cell ? cell.v : null;
-
-      // Create table row for data
-      const row = document.createElement('tr');
-      row.innerHTML = `<td>${value}</td>`;
-      table.appendChild(row);
-    });
+function displayExcelData(workbook, filename) {
+      // Define the cell locations that contain the data to be read
+      console.log(tableArray[0].rowindex);
+  // const dataLocations = [
+  //   { filename: '', row: tableArray[0].rowindex + 1, col: tableArray[0].cellindex + 1 }, // Example data location for filename
+  //   { filename: '', row: 3, col: 2 } // Example data location for filename
+  // ];
+  let dataLocations = [];
+  for (let i = 0; i < tableArray.length; i++) {
+    dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
+    console.log(dataLocations);
   }
-});
+  // Create table header
+  const table = document.getElementById('merged-table');
+  const headerRow = document.createElement('tr');
+  headerRow.innerHTML = `<th>${filename}</th>`;
+  dataLocations.forEach(loc => {
+    headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
+  });
+  table.appendChild(headerRow);
+
+  // Loop through data locations and retrieve data from specified location
+  dataLocations.forEach(loc => {
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
+    const cell = sheet[cellAddress];
+    const value = cell ? cell.v : null;
+
+    // Create table row for data
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${value}</td>`;
+    table.appendChild(row);
+  });
+}
 
 
 
-
+// Download the new excel table from the merged files to a new excel workbook
 let downloadBtn = document.getElementById('download-btn');
   downloadBtn.addEventListener('click', Table2XLSX);
 /* Create worksheet from HTML DOM TABLE */
 function Table2XLSX() {
-
+  // Copied from https://docs.sheetjs.com/docs/ "Export an HTML Table to Excel XLSX"
   const table = document.getElementById("merged-table");
   const wb = XLSX.utils.table_to_book(table);
 
