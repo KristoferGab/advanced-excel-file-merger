@@ -69,7 +69,7 @@ uploadBtn.addEventListener('click', () => {
 });
 
 let tableArray =  [];
-let cellID;
+
 // Function to set eventlistener on all tabledata and retrieve the clicked cell from ecent object on uploaded excelfile
 // Code copied from https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click : credit to Teemu!
 function tableHandler() {
@@ -80,6 +80,8 @@ function tableHandler() {
     const row = cell.parentElement;
     console.log(cell.innerHTML, row.rowIndex, cell.cellIndex);
     let cellID = row.rowIndex.toString()*3 + cell.cellIndex.toString();
+    let listID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'list';
+    let listInputID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'input';
     // Changing color on selected or deselected cells and creating array with selected cells as objects.
     if (cell.style.backgroundColor !== "lightgreen") {
       cell.style.border = "2px solid green";
@@ -89,8 +91,10 @@ function tableHandler() {
       console.log(tableObject.cellID)
       tableArray.push(tableObject);
       console.log(tableArray);
+        console.log(listID); 
+        console.log(listInputID); 
       //Function to display cell value choises
-      displayTableSelections(cell.innerHTML, cellID);
+      displayTableSelections(cell.innerHTML, cellID, listID, listInputID);
       // If cell is deselected make sure to remove object from array and change back color.
     } else if (cell.style.backgroundColor === "lightgreen") {
       cell.style.border = "1px solid black";
@@ -101,22 +105,55 @@ function tableHandler() {
         return obj.cellID !== cellIDs;
       })
       // Remove h4 element connected to the cellID
-      console.log(cellID);
+        console.log(cellID);
       let h4Element = document.getElementById(cellID);
       h4Element.remove();
+
+        console.log(listID);
+      let dataList = document.getElementById(listID);
+      dataList.remove();
+      
+      console.log(listInputID);
+      let dataInput = document.getElementById(listInputID);
+      dataInput.remove();
+        
     }
   });
 }
 
 // Display the selected cells as h4 elements with its cell value
-function displayTableSelections(cellValue, ID) {
+function displayTableSelections(cellValue, cellId, listID, listInputID) {
     let templateChoises = document.getElementById('template-choises');
     let selectedValue = document.createElement('h4');
-    selectedValue.setAttribute('id', ID)
+    selectedValue.setAttribute('id', cellId)
     selectedValue.innerHTML = cellValue;
-    console.log(selectedValue);
-    console.log(cellValue);
+      console.log(selectedValue);
+      console.log(cellValue);
     templateChoises.appendChild(selectedValue);
+
+    let dataListDiv = document.getElementById('datalist-alternatives-div');
+    let inputData = document.createElement('Input');
+    let dataList = document.createElement('datalist');
+
+    inputData.setAttribute('list', listID);
+    inputData.setAttribute('id', listInputID);
+    inputData.setAttribute('placeholder', 'Append to column');
+    dataList.setAttribute('id', listID);
+    
+    
+
+    let listValues = `
+    <option value="Append to column"></option>
+    <option value="Append to row"></option>
+    <option value="Append to new column"></option>
+    <option value="Append to new row"></option>
+    `;
+
+    dataList.innerHTML = listValues;
+      console.log(dataList);
+      dataListDiv.appendChild(inputData);
+      dataListDiv.appendChild(dataList);
+    
 }
 
 
