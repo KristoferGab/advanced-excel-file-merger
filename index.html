@@ -14,16 +14,16 @@
             <h1>Advanced Excel-file Merger</h1>
         </div>
         <div>
-            <div>
+            <div class="header-steps">
                 <h2>Step1</h2>
             </div>
-            <div>
+            <div class="header-steps">
                 <h2>Step2</h2>
             </div>
-            <div>
+            <div class="header-steps">
                 <h2>Step3</h2>
             </div>
-            <div>
+            <div class="header-steps">
                 <h2>Step4</h2>
             </div>
         </div>
@@ -36,25 +36,27 @@
             <input type="file" id="template-file-selector" accept=".xls, .xlsx, .xlsm, .xltx">
             <button class="btn" id="template-upload">Upload Template</button>
         </div>
-        <!-- Display the upploaded template file -->
-        <div id="template-file">
-            
-        </div>
-        <!-- Merge options -->
-        <div id="merge-options">
-            <!-- Show choises picked from the template file -->
-            <div id="template-choises">
-
+        <div>
+            <!-- Display the upploaded template file -->
+            <div class="merge-options" id="template-file">
+                
             </div>
-            <!-- User choses what they want to do with the cells that they have picked -->
-            <div>
-                <input list="merge-alternatives" placeholder="Chose merge option here">
-                <datalist id="merge-alternatives">
-                    <option value="Addition"></option>
-                    <option value="Subtraction"></option>
-                    <option value="Multiply"></option>
-                    <option value="Division"></option>
-                </datalist>
+            <!-- Merge options -->
+            <div class="merge-options" id="merge-alternatives-div">
+                <!-- Show choises picked from the template file -->
+                <div class="merge-alternatives" id="template-choises">
+
+                </div>
+                <!-- User choses what they want to do with the cells that they have picked -->
+                <div class="merge-alternatives">
+                    <input list="merge-alternatives-datalist" placeholder="Choose merge option here">
+                    <datalist id="datalist-alternatives">
+                        <option value="Addition"></option>
+                        <option value="Subtraction"></option>
+                        <option value="Multiply"></option>
+                        <option value="Division"></option>
+                    </datalist>
+                </div>
             </div>
         </div>
     </section>

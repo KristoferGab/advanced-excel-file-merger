@@ -84,7 +84,7 @@ function tableHandler() {
       cell.style.border = "2px solid green";
       cell.style.backgroundColor = "lightgreen";
       let tableObject = {cellvalue: cell.innerHTML, rowindex: row.rowIndex, 
-          cellindex: cell.cellIndex, cellID: row.rowIndex.toString() + cell.cellIndex.toString()}; //not unique!
+          cellindex: cell.cellIndex, cellID: row.rowIndex.toString() + ',' + cell.cellIndex.toString()}; //not unique!
       tableArray.push(tableObject);
       console.log(tableArray);
       //Function to display cell value choises
@@ -116,11 +116,33 @@ function displayTableSelections(cellValue, ID) {
     templateChoises.appendChild(selectedValue);
 }
 
+// 
+// let fileInput = document.getElementById('template-file-selector');
+// let uploadBtn = document.getElementById('template-upload');
+// let output = document.getElementById('template-file');
 
+// let selectedFile;
+
+// fileInput.addEventListener('change', (event) => {
+//   // set the selectedFile variable to the chosen file
+//   selectedFile = event.target.files[0];
+// });
+
+// uploadBtn.addEventListener('click', () => {
+//   if (!selectedFile) {
+//     alert('Please select a file first!');
+//     return;
+//   }
+
+//   let reader = new FileReader();
+// 
 
 
 // Set up event listener for file input
-const filesInput = document.getElementById('multi-files-selector');
+let filesInput = document.getElementById('multi-files-selector');
+let mergeBtn = document.getElementById('merge-btn');
+let selectedFiles;
+
 filesInput.addEventListener('change', handleFilesInput);
 
 function handleFilesInput(e) {
@@ -131,6 +153,7 @@ function handleFilesInput(e) {
     reader.onload = function(event) {
       const workbook = XLSX.read(event.target.result, { type: 'binary' });
       displayExcelData(workbook, file.name);
+      console.log(file.name);
     }
     reader.readAsBinaryString(file);
   }
@@ -139,10 +162,6 @@ function handleFilesInput(e) {
 function displayExcelData(workbook, filename) {
       // Define the cell locations that contain the data to be read
       console.log(tableArray[0].rowindex);
-  // const dataLocations = [
-  //   { filename: '', row: tableArray[0].rowindex + 1, col: tableArray[0].cellindex + 1 }, // Example data location for filename
-  //   { filename: '', row: 3, col: 2 } // Example data location for filename
-  // ];
   let dataLocations = [];
   for (let i = 0; i < tableArray.length; i++) {
     dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
@@ -152,9 +171,9 @@ function displayExcelData(workbook, filename) {
   const table = document.getElementById('merged-table');
   const headerRow = document.createElement('tr');
   headerRow.innerHTML = `<th>${filename}</th>`;
-  dataLocations.forEach(loc => {
-    headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
-  });
+  // dataLocations.forEach(loc => {
+  //   headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
+  // });
   table.appendChild(headerRow);
 
   // Loop through data locations and retrieve data from specified location
@@ -164,14 +183,13 @@ function displayExcelData(workbook, filename) {
     const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
     const cell = sheet[cellAddress];
     const value = cell ? cell.v : null;
-
+      console.log(dataLocations);
     // Create table row for data
     const row = document.createElement('tr');
     row.innerHTML = `<td>${value}</td>`;
     table.appendChild(row);
   });
 }
-
 
 
 // Download the new excel table from the merged files to a new excel workbook
