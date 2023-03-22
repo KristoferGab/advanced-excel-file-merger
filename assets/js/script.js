@@ -69,6 +69,7 @@ uploadBtn.addEventListener('click', () => {
 });
 
 let tableArray =  [];
+let cellID;
 // Function to set eventlistener on all tabledata and retrieve the clicked cell from ecent object on uploaded excelfile
 // Code copied from https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click : credit to Teemu!
 function tableHandler() {
@@ -78,13 +79,14 @@ function tableHandler() {
     if (!cell) {return;} // Quit, not clicked on a cell
     const row = cell.parentElement;
     console.log(cell.innerHTML, row.rowIndex, cell.cellIndex);
-    let cellID = row.rowIndex.toString() + cell.cellIndex.toString();
+    let cellID = row.rowIndex.toString()*3 + cell.cellIndex.toString();
     // Changing color on selected or deselected cells and creating array with selected cells as objects.
     if (cell.style.backgroundColor !== "lightgreen") {
       cell.style.border = "2px solid green";
       cell.style.backgroundColor = "lightgreen";
       let tableObject = {cellvalue: cell.innerHTML, rowindex: row.rowIndex, 
-          cellindex: cell.cellIndex, cellID: row.rowIndex.toString() + ',' + cell.cellIndex.toString()}; //not unique!
+          cellindex: cell.cellIndex, cellID: cellID};
+      console.log(tableObject.cellID)
       tableArray.push(tableObject);
       console.log(tableArray);
       //Function to display cell value choises
@@ -94,11 +96,12 @@ function tableHandler() {
       cell.style.border = "1px solid black";
       cell.style.backgroundColor = "white";
       // Find the deselected cell and remove it from array. Credit to Peter Mortensen on https://stackoverflow.com/questions/21659888/find-and-remove-objects-in-an-array-based-on-a-key-value-in-javascript
-      let cellID = row.rowIndex.toString() + cell.cellIndex.toString();
+      let cellIDs = cellID;
       tableArray = tableArray.filter(function( obj ) {
-        return obj.cellID !== cellID;
+        return obj.cellID !== cellIDs;
       })
       // Remove h4 element connected to the cellID
+      console.log(cellID);
       let h4Element = document.getElementById(cellID);
       h4Element.remove();
     }
@@ -116,33 +119,11 @@ function displayTableSelections(cellValue, ID) {
     templateChoises.appendChild(selectedValue);
 }
 
-// 
-// let fileInput = document.getElementById('template-file-selector');
-// let uploadBtn = document.getElementById('template-upload');
-// let output = document.getElementById('template-file');
 
-// let selectedFile;
-
-// fileInput.addEventListener('change', (event) => {
-//   // set the selectedFile variable to the chosen file
-//   selectedFile = event.target.files[0];
-// });
-
-// uploadBtn.addEventListener('click', () => {
-//   if (!selectedFile) {
-//     alert('Please select a file first!');
-//     return;
-//   }
-
-//   let reader = new FileReader();
-// 
 
 
 // Set up event listener for file input
 let filesInput = document.getElementById('multi-files-selector');
-let mergeBtn = document.getElementById('merge-btn');
-let selectedFiles;
-
 filesInput.addEventListener('change', handleFilesInput);
 
 function handleFilesInput(e) {
