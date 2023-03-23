@@ -108,11 +108,11 @@ function tableHandler() {
         console.log(cellID);
       let h4Element = document.getElementById(cellID);
       h4Element.remove();
-
+      // Remove datalist element connected to the listID
         console.log(listID);
       let dataList = document.getElementById(listID);
       dataList.remove();
-      
+      // Remove input element connected to the listInputID
       console.log(listInputID);
       let dataInput = document.getElementById(listInputID);
       dataInput.remove();
@@ -157,13 +157,17 @@ function displayTableSelections(cellValue, cellId, listID, listInputID) {
 }
 
 
-
-
 // Set up event listener for file input
 let filesInput = document.getElementById('multi-files-selector');
 filesInput.addEventListener('change', handleFilesInput);
 
 function handleFilesInput(e) {
+  console.log(tableArray);
+  if (tableArray.length < 1) {
+    alert('Please select a template file first!');
+    e = "";
+    return;
+  }
   const files = e.target.files;
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
@@ -173,7 +177,7 @@ function handleFilesInput(e) {
       displayExcelData(workbook, file.name);
       console.log(file.name);
     }
-    reader.readAsBinaryString(file);
+  reader.readAsBinaryString(file);
   }
 }
 
