@@ -211,39 +211,6 @@ function handleFilesInput(e) {
   }
 }
 
-// function displayExcelData(workbook, filename) {
-//       // Define the cell locations that contain the data to be read
-//       console.log(tableArray[0].rowindex);
-//   let dataLocations = [];
-//   for (let i = 0; i < tableArray.length; i++) {
-//     dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
-//     console.log(dataLocations);
-//   }
-//   // Create table header
-//   const table = document.getElementById('merged-table');
-//   const headerRow = document.createElement('thead');
-//   headerRow.innerHTML = `<th>${filename}</th>`;
-//   // dataLocations.forEach(loc => {
-//   //   headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
-//   // });
-//   table.appendChild(headerRow);
-
-//   // Loop through data locations and retrieve data from specified location
-//   dataLocations.forEach(loc => {
-//     const sheetName = workbook.SheetNames[0];
-//     const sheet = workbook.Sheets[sheetName];
-//     const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
-//       console.log(cellAddress);
-//     const cell = sheet[cellAddress];
-//       console.log(cell);
-//     const value = cell ? cell.v : null;
-//       console.log(value);
-//     // Create table row for data
-//     const row = document.createElement('tr');
-//     row.innerHTML = `<td>${value}</td>`;
-//     table.appendChild(row);
-//   });
-// }
 
 function displayExcelData(workbook, filename) {
   // Define the cell locations that contain the data to be read
@@ -258,9 +225,9 @@ console.log(dataLocations);
 // Create table header
 const table = document.getElementById('merged-thead');
 
-// const headerRow = document.createElement('thead');
-// headerRow.innerHTML = `<th>${filename}</th>`;
-// table.appendChild(headerRow);
+const headerRow = document.createElement('thead');
+headerRow.innerHTML = `<th>${filename}</th>`;
+table.appendChild(headerRow);
 
 // Loop through data locations and retrieve data from specified location
 dataLocations.forEach(loc => {

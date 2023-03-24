@@ -53,12 +53,19 @@ thead {
 
 h4 {
     border: 1px solid black;
-    margin-top: 1.2px;
+    margin-top: 1.4px;
     margin-bottom: 0;
     font-size: 1rem;
-    padding: 1px, 2px;
+    height: 20px;
 }
 
 .chose-files-div {
     margin: 50px 0;
+}
+
+.merge-alternatives > select {
+    width: 90%;
+    height: 20px;
+    margin: 1.8px 0;
+    text-align: center;
 }
