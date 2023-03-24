@@ -82,6 +82,7 @@ function tableHandler() {
     let cellID = row.rowIndex.toString()*3 + cell.cellIndex.toString();
     let listID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'list';
     let listInputID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'input';
+    let list2ID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'list2';
     // Changing color on selected or deselected cells and creating array with selected cells as objects.
     if (cell.style.backgroundColor !== "lightgreen") {
       cell.style.border = "2px solid green";
@@ -94,7 +95,7 @@ function tableHandler() {
         console.log(listID); 
         console.log(listInputID); 
       //Function to display cell value choises
-      displayTableSelections(cell.innerHTML, cellID, listID, listInputID);
+      displayTableSelections(cell.innerHTML, cellID, listID, listInputID, list2ID);
       // If cell is deselected make sure to remove object from array and change back color.
     } else if (cell.style.backgroundColor === "lightgreen") {
       cell.style.border = "1px solid black";
@@ -112,6 +113,10 @@ function tableHandler() {
         console.log(listID);
       let dataList = document.getElementById(listID);
       dataList.remove();
+
+      let dataList2 = document.getElementById(list2ID);
+      dataList2.remove();
+
       // Remove input element connected to the listInputID
       console.log(listInputID);
       let dataInput = document.getElementById(listInputID);
@@ -122,38 +127,56 @@ function tableHandler() {
 }
 
 // Display the selected cells as h4 elements with its cell value
-function displayTableSelections(cellValue, cellId, listID, listInputID) {
-    let templateChoises = document.getElementById('template-choises');
-    let selectedValue = document.createElement('h4');
-    selectedValue.setAttribute('id', cellId)
-    selectedValue.innerHTML = cellValue;
-      console.log(selectedValue);
-      console.log(cellValue);
-    templateChoises.appendChild(selectedValue);
+function displayTableSelections(cellValue, cellId, listID, listInputID, list2ID) {
+  let templateChoises = document.getElementById('template-choises');
+  let selectedValue = document.createElement('h4');
+  selectedValue.setAttribute('id', cellId)
+  selectedValue.innerHTML = cellValue;
+    console.log(selectedValue);
+    console.log(cellValue);
+  templateChoises.appendChild(selectedValue);
 
-    let dataListDiv = document.getElementById('datalist-alternatives-div');
-    let inputData = document.createElement('Input');
-    let dataList = document.createElement('datalist');
+  // // Create datalists and input element in HTML
 
-    inputData.setAttribute('list', listID);
-    inputData.setAttribute('id', listInputID);
-    inputData.setAttribute('placeholder', 'Append to column');
-    dataList.setAttribute('id', listID);
-    
-    
+  // Code for adding select option for array copied from https://stackoverflow.com/questions/17001961/how-to-add-drop-down-list-select-programmatically credit to tymeJV
+  let dataList1Div = document.getElementById('datalist-alternatives-div');
 
-    let listValues = `
-    <option value="Append to column"></option>
-    <option value="Append to row"></option>
-    <option value="Append to new column"></option>
-    <option value="Append to new row"></option>
-    `;
+  //Create array of options to be added
+  var listArray = ["Append to column","Append to row"];
 
-    dataList.innerHTML = listValues;
-      console.log(dataList);
-      dataListDiv.appendChild(inputData);
-      dataListDiv.appendChild(dataList);
-    
+  //Create and append select list
+  var selectList1 = document.createElement("select");
+  selectList1.setAttribute("id", listInputID);
+  dataList1Div.appendChild(selectList1);
+
+  //Create and append the options
+  for (var i = 0; i < listArray.length; i++) {
+      var option = document.createElement("option");
+      option.setAttribute("value", listArray[i]);
+      option.setAttribute('id', listID)
+      option.text = listArray[i];
+      selectList1.appendChild(option);
+  } 
+  
+
+  // Code for adding select option for full alphabet copied from https://stackoverflow.com/questions/17001961/how-to-add-drop-down-list-select-programmatically credit to tymeJV
+  let dataListDiv2 = document.getElementById('column-choises-div');
+
+  //Create array of options to be added
+  var array = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+  //Create and append select list
+  var selectList = document.createElement("select");
+  selectList.setAttribute("id", listInputID);
+  dataListDiv2.appendChild(selectList);
+
+  //Create and append the options
+  for (var i = 0; i < array.length; i++) {
+      var option = document.createElement("option");
+      option.setAttribute("value", array[i]);
+      option.text = array[i];
+      selectList.appendChild(option);
+  } 
 }
 
 
@@ -181,36 +204,72 @@ function handleFilesInput(e) {
   }
 }
 
-function displayExcelData(workbook, filename) {
-      // Define the cell locations that contain the data to be read
-      console.log(tableArray[0].rowindex);
-  let dataLocations = [];
-  for (let i = 0; i < tableArray.length; i++) {
-    dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
-    console.log(dataLocations);
-  }
-  // Create table header
-  const table = document.getElementById('merged-table');
-  const headerRow = document.createElement('tr');
-  headerRow.innerHTML = `<th>${filename}</th>`;
-  // dataLocations.forEach(loc => {
-  //   headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
-  // });
-  table.appendChild(headerRow);
+// function displayExcelData(workbook, filename) {
+//       // Define the cell locations that contain the data to be read
+//       console.log(tableArray[0].rowindex);
+//   let dataLocations = [];
+//   for (let i = 0; i < tableArray.length; i++) {
+//     dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
+//     console.log(dataLocations);
+//   }
+//   // Create table header
+//   const table = document.getElementById('merged-table');
+//   const headerRow = document.createElement('thead');
+//   headerRow.innerHTML = `<th>${filename}</th>`;
+//   // dataLocations.forEach(loc => {
+//   //   headerRow.innerHTML += `<th>(${loc.row},${loc.col})</th>`;
+//   // });
+//   table.appendChild(headerRow);
 
-  // Loop through data locations and retrieve data from specified location
-  dataLocations.forEach(loc => {
-    const sheetName = workbook.SheetNames[0];
-    const sheet = workbook.Sheets[sheetName];
-    const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
-    const cell = sheet[cellAddress];
-    const value = cell ? cell.v : null;
-      console.log(dataLocations);
-    // Create table row for data
-    const row = document.createElement('tr');
-    row.innerHTML = `<td>${value}</td>`;
-    table.appendChild(row);
-  });
+//   // Loop through data locations and retrieve data from specified location
+//   dataLocations.forEach(loc => {
+//     const sheetName = workbook.SheetNames[0];
+//     const sheet = workbook.Sheets[sheetName];
+//     const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
+//       console.log(cellAddress);
+//     const cell = sheet[cellAddress];
+//       console.log(cell);
+//     const value = cell ? cell.v : null;
+//       console.log(value);
+//     // Create table row for data
+//     const row = document.createElement('tr');
+//     row.innerHTML = `<td>${value}</td>`;
+//     table.appendChild(row);
+//   });
+// }
+
+function displayExcelData(workbook, filename) {
+  // Define the cell locations that contain the data to be read
+  console.log(tableArray[0].rowindex);
+let dataLocations = [];
+for (let i = 0; i < tableArray.length; i++) {
+dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
+console.log(dataLocations);
+}
+
+
+// Create table header
+const table = document.getElementById('merged-thead');
+
+// const headerRow = document.createElement('thead');
+// headerRow.innerHTML = `<th>${filename}</th>`;
+// table.appendChild(headerRow);
+
+// Loop through data locations and retrieve data from specified location
+dataLocations.forEach(loc => {
+const sheetName = workbook.SheetNames[0];
+const sheet = workbook.Sheets[sheetName];
+const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
+  console.log(cellAddress);
+const cell = sheet[cellAddress];
+  console.log(cell);
+const value = cell ? cell.v : null;
+  console.log(value);
+// Create table row for data
+const row = document.createElement('tr');
+row.innerHTML = `<td>${value}</td>`;
+table.appendChild(row);
+});
 }
 
 
