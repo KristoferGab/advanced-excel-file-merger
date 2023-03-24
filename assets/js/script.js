@@ -83,6 +83,7 @@ function tableHandler() {
     let listID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'list';
     let listInputID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'input';
     let list2ID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'list2';
+    let listInput2ID = row.rowIndex.toString()*3 + cell.cellIndex.toString() + 'input2';
     // Changing color on selected or deselected cells and creating array with selected cells as objects.
     if (cell.style.backgroundColor !== "lightgreen") {
       cell.style.border = "2px solid green";
@@ -95,7 +96,7 @@ function tableHandler() {
         console.log(listID); 
         console.log(listInputID); 
       //Function to display cell value choises
-      displayTableSelections(cell.innerHTML, cellID, listID, listInputID, list2ID);
+      displayTableSelections(cell.innerHTML, cellID, listID, listInputID, list2ID, listInput2ID);
       // If cell is deselected make sure to remove object from array and change back color.
     } else if (cell.style.backgroundColor === "lightgreen") {
       cell.style.border = "1px solid black";
@@ -106,28 +107,33 @@ function tableHandler() {
         return obj.cellID !== cellIDs;
       })
       // Remove h4 element connected to the cellID
-        console.log(cellID);
+
       let h4Element = document.getElementById(cellID);
       h4Element.remove();
       // Remove datalist element connected to the listID
-        console.log(listID);
-      let dataList = document.getElementById(listID);
-      dataList.remove();
 
-      let dataList2 = document.getElementById(list2ID);
-      dataList2.remove();
+      let listDataID = document.getElementById(listID);
+      listDataID.remove();
+
+      let list2DataID = document.getElementById(list2ID);
+      list2DataID.remove();
 
       // Remove input element connected to the listInputID
-      console.log(listInputID);
-      let dataInput = document.getElementById(listInputID);
-      dataInput.remove();
+
+      let listInputDataID = document.getElementById(listInputID);
+      listInputDataID.remove();
+
+      // Remove input element connected to the listInputID
+
+      let listInputData2ID = document.getElementById(listInput2ID);
+      listInputData2ID.remove();
         
     }
   });
 }
 
 // Display the selected cells as h4 elements with its cell value
-function displayTableSelections(cellValue, cellId, listID, listInputID, list2ID) {
+function displayTableSelections(cellValue, cellId, listID, listInputID, list2ID, listInput2ID) {
   let templateChoises = document.getElementById('template-choises');
   let selectedValue = document.createElement('h4');
   selectedValue.setAttribute('id', cellId)
@@ -167,13 +173,14 @@ function displayTableSelections(cellValue, cellId, listID, listInputID, list2ID)
 
   //Create and append select list
   var selectList = document.createElement("select");
-  selectList.setAttribute("id", listInputID);
+  selectList.setAttribute("id", listInput2ID);
   dataListDiv2.appendChild(selectList);
 
   //Create and append the options
   for (var i = 0; i < array.length; i++) {
       var option = document.createElement("option");
       option.setAttribute("value", array[i]);
+      option.setAttribute('id', list2ID)
       option.text = array[i];
       selectList.appendChild(option);
   } 
