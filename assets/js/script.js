@@ -221,6 +221,7 @@ function handleFilesInput(files) {
 
 
 function displayExcelData(workbook, filename) {
+  // Define the cell locations that contain the data to be read
   console.log(tableArray[0].rowindex);
   let dataLocations = [];
   for (let i = 0; i < tableArray.length; i++) {
