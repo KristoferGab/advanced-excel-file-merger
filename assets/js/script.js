@@ -169,7 +169,7 @@ function displayTableSelections(cellValue, cellId, listID, listInputID, list2ID,
   let dataListDiv2 = document.getElementById('column-choises-div');
 
   //Create array of options to be added
-  var array = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  var alphabetArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
   //Create and append select list
   var selectList = document.createElement("select");
@@ -177,28 +177,36 @@ function displayTableSelections(cellValue, cellId, listID, listInputID, list2ID,
   dataListDiv2.appendChild(selectList);
 
   //Create and append the options
-  for (var i = 0; i < array.length; i++) {
+  for (var i = 0; i < alphabetArray.length; i++) {
       var option = document.createElement("option");
-      option.setAttribute("value", array[i]);
+      option.setAttribute("value", alphabetArray[i]);
       option.setAttribute('id', list2ID)
-      option.text = array[i];
+      option.text = alphabetArray[i];
       selectList.appendChild(option);
   } 
 }
 
 
+
 // Set up event listener for file input
 let filesInput = document.getElementById('multi-files-selector');
-filesInput.addEventListener('change', handleFilesInput);
+let mergeBtn = document.getElementById('merge-btn');
+let selectedFiles;
 
-function handleFilesInput(e) {
-  console.log(tableArray);
-  if (tableArray.length < 1) {
-    alert('Please select a template file first!');
-    e = "";
+filesInput.addEventListener('change', (event) => {
+  // set the selectedFile variable to the chosen file
+  selectedFiles = event.target.files;
+});
+
+mergeBtn.addEventListener('click', () => {
+  if (!selectedFiles) {
+    alert('Please select merge files first!');
     return;
   }
-  const files = e.target.files;
+  handleFilesInput(selectedFiles);
+});
+
+function handleFilesInput(files) {
   for (let i = 0; i < files.length; i++) {
     const file = files[i];
     const reader = new FileReader();
@@ -213,37 +221,36 @@ function handleFilesInput(e) {
 
 
 function displayExcelData(workbook, filename) {
-  // Define the cell locations that contain the data to be read
   console.log(tableArray[0].rowindex);
-let dataLocations = [];
-for (let i = 0; i < tableArray.length; i++) {
-dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
-console.log(dataLocations);
-}
+  let dataLocations = [];
+  for (let i = 0; i < tableArray.length; i++) {
+  dataLocations.push({ filename: '', row: tableArray[i].rowindex + 1, col: tableArray[i].cellindex + 1 });
+  console.log(dataLocations);
+  }
 
 
-// Create table header
-const table = document.getElementById('merged-thead');
+  // Create table header
+  const table = document.getElementById('merged-table');
 
-const headerRow = document.createElement('thead');
-headerRow.innerHTML = `<th>${filename}</th>`;
-table.appendChild(headerRow);
+  const headerRow = document.createElement('thead');
+  headerRow.innerHTML = `<th>${filename}</th>`;
+  table.appendChild(headerRow);
 
-// Loop through data locations and retrieve data from specified location
-dataLocations.forEach(loc => {
-const sheetName = workbook.SheetNames[0];
-const sheet = workbook.Sheets[sheetName];
-const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
-  console.log(cellAddress);
-const cell = sheet[cellAddress];
-  console.log(cell);
-const value = cell ? cell.v : null;
-  console.log(value);
-// Create table row for data
-const row = document.createElement('tr');
-row.innerHTML = `<td>${value}</td>`;
-table.appendChild(row);
-});
+  // Loop through data locations and retrieve data from specified location
+  dataLocations.forEach(loc => {
+  const sheetName = workbook.SheetNames[0];
+  const sheet = workbook.Sheets[sheetName];
+  const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
+    console.log(cellAddress);
+  const cell = sheet[cellAddress];
+    console.log(cell);
+  const value = cell ? cell.v : null;
+    console.log(value);
+  // Create table row for data
+  const row = document.createElement('tr');
+  row.innerHTML = `<td>${value}</td>`;
+  table.appendChild(row);
+  });
 }
 
 
