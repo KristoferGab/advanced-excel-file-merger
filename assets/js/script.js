@@ -71,7 +71,7 @@ uploadBtn.addEventListener('click', () => {
 let tableArray =  [];
 
 // Function to set eventlistener on all tabledata and retrieve the clicked cell from ecent object on uploaded excelfile
-// Code copied from https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click : credit to Teemu!
+// Code copied from https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click : credit to Teemu! (Heavily modified by me)
 function tableHandler() {
   const tbody = document.querySelector('#templateTable tbody');
   tbody.addEventListener('click', function (e) {
@@ -89,7 +89,7 @@ function tableHandler() {
       cell.style.border = "2px solid green";
       cell.style.backgroundColor = "lightgreen";
       let tableObject = {cellvalue: cell.innerHTML, rowindex: row.rowIndex, 
-          cellindex: cell.cellIndex, cellID: cellID};
+          cellindex: cell.cellIndex, cellID: cellID, listID: listID, listInputID: listInputID, list2ID: list2ID, listInput2ID: listInput2ID};
       console.log(tableObject.cellID)
       tableArray.push(tableObject);
       console.log(tableArray);
@@ -230,27 +230,34 @@ function displayExcelData(workbook, filename) {
   }
 
 
-  // Create table header
+ 
   const table = document.getElementById('merged-table');
-
+  // Create table header
   const headerRow = document.createElement('thead');
   headerRow.innerHTML = `<th>${filename}</th>`;
   table.appendChild(headerRow);
 
   // Loop through data locations and retrieve data from specified location
   dataLocations.forEach(loc => {
-  const sheetName = workbook.SheetNames[0];
-  const sheet = workbook.Sheets[sheetName];
-  const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
-    console.log(cellAddress);
-  const cell = sheet[cellAddress];
-    console.log(cell);
-  const value = cell ? cell.v : null;
-    console.log(value);
-  // Create table row for data
-  const row = document.createElement('tr');
-  row.innerHTML = `<td>${value}</td>`;
-  table.appendChild(row);
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const cellAddress = XLSX.utils.encode_cell({ r: loc.row - 1, c: loc.col - 1 });
+      console.log(cellAddress);
+    const cell = sheet[cellAddress];
+      console.log(cell);
+    const value = cell ? cell.v : null;
+      console.log(value);
+
+
+    
+
+    // Create table row for data
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${value}</td>`;
+    table.appendChild(row);
+
+
+
   });
 }
 
