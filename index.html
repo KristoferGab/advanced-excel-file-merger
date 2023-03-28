@@ -134,7 +134,7 @@
             <div class="instruction-steps">
                 <h2>Instruction video</h2>
                 <!-- Credits for preload and poster to: https://web.dev/lazy-loading-video/ -->
-                <video src="assets/video/Instructionvideo.mp4" alt="Instruction video .mp4 format" id="instruction-video" controls preload="none" poster="assets/images/instructionvideoimg.JPG"></video>
+                <video src="assets/video/Instructionvideo.mp4" aria-label="Instruction video in .mp4 format" id="instruction-video" controls preload="none" poster="assets/images/instructionvideoimg.JPG"></video>
                 <!-- Credits for recording video to https://www.youtube.com/watch?v=3I8IzHa2rY4 time 1:33 -->
             </div>
         </div>
@@ -155,9 +155,9 @@
                 <!-- Onsubmit credit to Dominic Bou-Samra on https://stackoverflow.com/questions/1438722/thank-you-alert-upon-form-submission  -->
                 <form onsubmit="alert('Thank you for your feedback.');">
                     <label for="fname">Your Name: *</label>
-                    <input type="text" required placeholder="John Doe"><br>
+                    <input type="text" id="fname" required placeholder="John Doe"><br>
                     <label for="email">Your Email: *</label>
-                    <input type="email" required placeholder="name@example.com"><br>
+                    <input type="email" id="email" required placeholder="name@example.com"><br>
                     <label for="feedback">Feedback: *</label><br>
                     <textarea name="feedback" id="feedback" cols="30" rows="10" required></textarea><br>
                     <input type="submit" value="Send Feedback">
