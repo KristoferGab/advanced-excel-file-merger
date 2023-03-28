@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced Excel-file merger">
+    <meta name="keywords" content="Excel, xls, xlsx, merge, merging">
+    <meta name="author" content="Kristofer Gabrielsson">
+
     <title>Advanced Excel-file Merger</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -45,8 +49,8 @@
     <section>
         <!-- First user choses a template file that is restricted to excelfiles only and one file choise -->
         <div class="file-selectors">
-            <input type="file" id="template-file-selector" accept=".xls, .xlsx, .xlsm, .xltx">
-            <button class="btn" id="template-upload">Upload Template</button>
+            <input type="file" id="template-file-selector" accept=".xls, .xlsx, .xlsm, .xltx" aria-label="File selector (Opens folder to select excel file)">
+            <button class="btn" id="template-upload" aria-label="Upload template file">Upload Template</button>
         </div>
         <div>
             <!-- Display the upploaded template file -->
@@ -80,17 +84,17 @@
     <!--------- User picks the files that they want to apply the merge program to with run program button and progress bar --------->
     <section>
         <div class="chose-files-div">
-            <input type="file" id="multi-files-selector" accept=".xls, .xlsx, .xlsm, .xltx" multiple>
-            <button class="btn" id="merge-btn">Let's Merge!</button>
+            <input type="file" id="multi-files-selector" accept=".xls, .xlsx, .xlsm, .xltx" multiple aria-label="Multi file selector (Opens folder to select miltiple excel files)">
+            <button class="btn" id="merge-btn" aria-label="Merge button">Let's Merge!</button>
         </div>
         <div>
             <table id="merged-table">
             </table>
 
-            <button class="btn chose-files-div" id="download-btn">Download</button>
+            <button class="btn chose-files-div" id="download-btn" aria-label="Download button">Download</button>
         </div>
     </section>
-
+    <!-- Section with instructions in more detail in four steps including images and a video -->
     <section id="instructions-section">
         <div id="instructions-div">
             <div>
@@ -129,13 +133,15 @@
             </div>
             <div class="instruction-steps">
                 <h2>Instruction video</h2>
+                <!-- Credits for preload and poster to: https://web.dev/lazy-loading-video/ -->
                 <video src="assets/video/Instructionvideo.mp4" alt="Instruction video .mp4 format" id="instruction-video" controls preload="none" poster="assets/images/instructionvideoimg.JPG"></video>
+                <!-- Credits for recording video to https://www.youtube.com/watch?v=3I8IzHa2rY4 time 1:33 -->
             </div>
         </div>
     </section>
-
+    <!-- Contact section with contact form  -->
     <Section id="contact-section">
-        <div id="contact-section">
+        <div>
             <div>
                 <h2 id="contact-heading">Please let us know what you think</h2>
             </div>
@@ -146,7 +152,8 @@
                 </p>
             </div>
             <div id="form">
-                <form action="mailto:kristofer.gabrielsson@gmail.com" method="POST" enctype="text/plain">
+                <!-- Mailto credit to https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_mail -->
+                <form onsubmit="alert('Thank you for your feedback.');">
                     <label for="fname">Your Name: *</label>
                     <input type="text" required placeholder="John Doe"><br>
                     <label for="email">Your Email: *</label>
@@ -158,7 +165,7 @@
             </div>
         </div>
     </Section>
-
+    <!-- About section explaining the usage of the tool as well as planed implementations -->
     <section id="about-the-tool">
         <h2 id="about-heading">About this tool</h2>
         <p>This tool is meant to help with merging selective data from multiple files in order to save tidious time spent opening and closing files manually. 
@@ -171,7 +178,7 @@
             <li>Overall design improvements on the site</li>
         </ul>
     </section>
-
+    <!-- Footer -->
     <footer>
         <h2>Advanced Excel-file Merger</h2>
         <ul>
