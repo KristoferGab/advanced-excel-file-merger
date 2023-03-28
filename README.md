@@ -1,10 +1,10 @@
-# Reality | Check
+# Advanced Excel-File Merger
 
-Reality Check is your one stop destination for getting all the different tech realities explained in just one page! Our goal is to create a visually appealing and simple summary to clarify what VR, AR and MR is all about with pictures, videos and explanatory texts as aid. We target people that does not have much prior knowledge of the subject at hand but are interested in learning more and has a tech-scene and interest. Since we are conducting weekly meet-ups we try to encourage as many people to join us as possible through our contact form at the end of the page.
+AEF Merger is a tool to use whenever you find yourself in a situation where you need to get data from a large amount of files. This work kan be very tidious and time consuming and there are more valuable things to do then opening and closing files all day long! Here you just simply choose what cells your data is stored in and then what hundreds or thousends of files you want to have this data collected from, and then just watch the magic happen as this tool will do the rest for you!
 
-![Responsive Mockup for Reality Check](docs/readme-img/responsive-design-reality-check.JPG)
+![Responsive Mockup for Advanced Excel-File Merger](docs/readme-img/responsive-design.JPG)
 
-[Check out the website here!](https://kristofergab.github.io/reality-check/)
+[Check out the tool here!](https://kristofergab.github.io/advanced-excel-file-merger/)
 
 
 
@@ -42,129 +42,107 @@ Reality Check is your one stop destination for getting all the different tech re
 ## User Experience (UX)
 ---
 ### Initial Discussion
-Reality Check is an informative website that aims at increasing the understanding and awareness of the different tech realities available today. By utilizing different ways to get the information out by text and video the aim of the owners is to get more and more people to sign up to the different meet-up times and socialize and exchange knowledge and experience in the different fields.
+AEF Merger is a tool meant for companies in need of making analysis by collecting information from a large amount of files. We are talking about years of saving excel files where a template has been used and then saved as separate files in folders. This has for a long time been a common practice in companie departments like finance, sales, customer service, production and logistics.
 
 ### User Stories
 
 #### Client Goals
 
-- To get the information about VR, AR and MR out to the public.
-- To ensure that this information is available:
-  - for people absorbing information through different senses.
-  - for different devices and screen sizes.
-- To get more people to join in on their meet-ups through signing up through the site.
+- Create value by saving companies time with tedious collection of information stored in multiple files
+
 
 #### First Time Visitor Goals
 
-- I want to get easy and quick information about a field that interests me.
-- I want to understand what Reality Check is all about.
-- I want to easily navigate through the page and find the information that I like.
+- I am in the need of collecting data from multiple excel-files and what a simple, quick and effective way of doing this.
 
 #### Returning Visitor Goals
 
-- I want to have the possibility to further my reading through other sources.
-- I want to be able to see up-to-date information on the meet-ups that I would like to join.
-- I want to join in on the meet-ups that interests me.
+- I want to do more analysis and whant to use this tool again as last time.
+- I want to do even more advanced merging alternatives than before.
 
 ## Design
 ---
 ### Color Scheme
 
-The color scheme was chosen by using the eye dropper tool from Chrome dev-tools on the hero image. Since the image was chosen first the theme was built around this color palettes. 
-
-It was checked on [mycolor.space](https://mycolor.space/?hex=%232E4159&sub=1) to ensure that the gradients where matching. Also some #hex colors where taken from the Love Running project delivered by Code Institute (off-white and dark-grey). 
+The color scheme was chosen by using the eye dropper tool from Chrome dev-tools on the top bar on Microsoft excel. Simplistic color was decided to put more focus and emphasis on the tool at hand.
 
 
 ### Typography
 
-Google Fonts was used for the chosen fonts to create a modern tech look:
-- Roboto Mono is used as headings and for the form submit button
-- Rubik is used for all other text in the body
-- Sans-serif is the backup font
-[Fontpair](https://www.fontpair.co/all) was used to find a good font pairing with Roboto Mono.
+Standard browser fonts are alowed in this project to focus time and effort on the tool.
 
 ### Imagery
-All images was taken from [Pexels](https://www.pexels.com/) free library and all pictures used are credited bellow with the name of the kind photographers that share their work for free. 
+All images was are taken from the site itself and no exteranl imagery was used in this project.
 
 ### Wireframes
 
 Wireframes were created using the program Balsamiq for desktop use.
 
-![A wireframe image of Reality Check](docs/readme-img/wireframe-reality-check.JPG)
+![A wireframe image of AEF Merger](docs/readme-img/wireframe.JPG)
 
 ## Features 
 ---
-We have included several features in this one-page website about the different tech realities out there. These features will be categorized in separate titles to enhance its intended use and functions.
+Several features have been inqluded in this one-page website. These features will be categorized in separate titles to enhance its intended use and functions.
 
 ### General Features
 
 - __Navigation Bar__
 
-  - This navigation bar is fixed at the top of the page and is fully responsive for different screens and will make sure to follow you along as you read through the sites information. It will help link you through the sites different sections Home VR AR MR and of course the Meet-up section.
+  - A simple navigation bar to locate the different sections on the website to quickly get to where needed. This is also included at the bottom of the site.
 
-![Nav Bar](docs/readme-img/navbar-reality-check.JPG)
+  ![Navigation bar](docs/readme-img/navbar.JPG)
 
 - __The landing page__
 
-  - The landing page is welcoming you with a text explaining what the site is all about including a visually appealing picture of the universe and an image of a child in awe using a VR-headset to strengthen what the sites is for.
-  - This section sets the atmosphere and mood through design and images that follow through the rest of the site.
+  - The landing page is meant to be simple and clear with all the steps needed to use the tool already visible for simplicity and effectivness.
 
-![Landing Page](docs/readme-img/landing-page-universe-img-reality-check.JPG)
+  ![Landing page](docs/readme-img/steps-short-inst.JPG)
 
-- __Summary Section__
+- __Merging tool Section__
 
-  - This section is a short summary of the three main pillars VR, AR and MR that includes a small image and a text that summarizes, with few words, describes their meaning and use.
-  - This will ensure to catch the users interest and they will easier find which if these categories (if not all) that they wish to continue to read and learn more about. Links are also included to wiki for further reading should this be of interest.
+  - This is the main part of the site and holds the powerful tool. Here you chose the template file and upload it to the site so that your merge options can be made. Here you also choose what files you want to merge and collect data from. You also have the possibility to unselect your choises incase the wrong cell was pressed.
 
-![Summary Section](docs/readme-img/summary-section-reality-check.JPG)
 
-- __Detailed Section__
+- __Instructions Section__
 
-  - This section goes into more detail about each category with more text that explains its use and purpose. A video is also included for users that are more into visual learning than reading. is a short summary of the three main pillars VR, AR and MR that includes a small image and a text that summarizes, with few words, describes their meaning and use.
-  - This is also where the links in the navigations bar will take you.
-  - These three detailed sections will ensure to further extend users interest and knowledge about the subjects.
- 
-![Detailed Section](docs/readme-img/detailed-section-vr-reality-check.JPG)
+  - This section explaines the steps for using the tool in more details with added images as support and also a video at the end of the section. The reason why this is below the tool is because of accessabillity to the tool part itself since it will most likely be a tool to come back to again and again.
 
-- __Meet-up section__
+  ![Instruction video image](docs/readme-img/instructionvideoimg.JPG)
 
-  - This section will allow the user to see exactly when the meet-ups will take place, if there are any requirements for that particular day and where they will be held. 
-  - This section will be updated as these times change to keep the user up to date. 
+- __Contact section__
 
-![Meet-up Times](docs/readme-img/meet-up-section-reality-check.JPG)
+  - As this tool is still in it's early development stage with loads more options possible for the future, a contact form is created to make sure that feedback can be resieved as part of continous work.
 
-- __Join-In form section__
+  ![Contact form](docs/readme-img/feedback-form.JPG)
 
-  - This form is connected to and followed right after the meet-up section to make it fast and simple for interested users to sign up for the different days and topics that fits them. The user will be asked to fill out their name, last name, email address and what days they would like to Join In on.
+- __About this tool section__
 
-![Join In](docs/readme-img/contact-form-reality-check.JPG)
+  - This section is a short disclaimer clearifying that the use of this tool is limited at the moment. It also intend to show what more functionalities are intended for future use.
 
 - __The Footer__ 
 
-  - The footer section includes links to the relevant social media sites for Reality | Check. The links will open to a new tab to allow easy navigation for the user. 
-  - The footer is valuable to the user as it encourages them to keep connected via social media.
-
-![Footer](docs/readme-img/footer-reality-check.JPG)
+  - The footer section is more to end the page and let you reach the sections you want to go back to to quickly get started and back to merging!
 
 
 ### Features Left to Implement
 
-- The detailed section shall in the future be located at the same space on the site with the JavaScript functionality to change information with radio-button choices instead of having to scroll further down.
+- Decide what column or row to append the data as seen in the display window today.
+- Making mathematical operations between cells as per user wishes.
+- Include intelligens such as find the last value in a row or column instead of chosing a static cell.
+- Overall design improvements on the site.
 
 ### Accessibility
 
 During the development process the accessibility has been considered througout to ensure that it is user friendly for everyone. Constant checks has been made with the Chrome Dev tool Lighthouse to ensure this by:
-- Using aria-labels for iframes.
+- Using aria-labels for buttons.
 - Using alternative descriptive attributes for all images used.
-- Hide FontAwesome on icons that are not important for screenreaders to read.
 - Ensuring sufficient contrast throughout the color schemes.
-- Fixing navbar at top of screen so that it is always possible to find the right information.
 
 ## Technologies Used
 ---
 ### Languages Used
 
-In this project HTML and CSS were used to create this site.
+In this project JavaScript, HTML and CSS were used to create this site.
 
 ### Frameworks & Programs Used
 
@@ -174,21 +152,13 @@ Git - For version control.
 
 Github - To save and store the files for the website.
 
-Google Fonts - To import the fonts used on the website.
-
-Font Awesome - For the icons on the website.
-
 Google Dev Tools - To troubleshoot and test features, solve issues with responsiveness and styling.
 
 Google Dev Tools Lighthouse - For performance, accessibility, Best Practices and SEO
 
-Pexels - For downloading and sizing images used.
-
-Cloudconvert - to convert jpg to webp format.
-
-Favicon.io To create favicon.
-
 Am I Responsive? - To show the website image on a range of devices.
+
+SheetJS - Library for working with excel files.
 
 ## Deployment
 ---
@@ -197,67 +167,60 @@ Am I Responsive? - To show the website image on a range of devices.
   2.  From the source section drop-down menu, select the main Branch
   3.  Once the main branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
 
-The live link can be found here - https://kristofergab.github.io/reality-check/ 
+The live link can be found here - https://kristofergab.github.io/advanced-excel-file-merger/
 
 
 ## __Testing__ 
 ---
 This website is built for Desktop viewing in mind and is therefor optimized for this purpose. Testing has been done during the developments different stages with lighthouse as a main resource to ensure the best performance possible at the same time as accessibility and best practices are followed and adhered to. Chrome dev-tools was the main source for designing the site where the Inspect window was constantly being observed to ensure the intended results. 
+Worth mentioning is that the development of the JavaScript was the most time consuming part in this project and alot of testing was continously run to ensure its function. More information about this under Full Testing.
 
-This is the final result for the deployed website:
-![Lighthouse Test 100%](docs/readme-img/lighthouse-results-desktop-reality-check-100.JPG)
+This is the final lighthouse test result for the deployed website:
+![Lighthouse Test 100%](docs/readme-img/lighthouse-result-desktop.JPG)
 
-In the beginning the results on performance was very poor. Around 75% was all it could muster and a lot of editing where made to ensure that this reached 100%. Some changes made to reach this:
-- Lazy loading images
-- Resizing images that were to large.
-- Change format from jpg to webp.
-- Lazy load iframes
-- Change iframes to only load on click and instead just show an image of the video
+While desktop was the focus for the build, media queries have been added to make sure that it works on other devices as well, such as tablet and mobile. Since this tool is directed to companies and users intended to do advanced merging with alot of data this tool works on computers only at the moment. It is viewable on mobile devices but is not intended to be used there.
 
-While desktop was the focus for the build, media queries have been added to make sure that it works on other devices as well, such as tablet and mobile. Due to the fixed navbar, detailed section, summary section, and to ensure high UX on different sized devices, as many as seven media queries were made. It works end responds well on different sizes but is not intended do be used on small mobile devices primarily.
-
-Even if the function is there on mobile devices it loses its performance, mostly due to image sizes optimized for desktop as can be seen on the image below. Also SEO is slightly less because of the small size on the checkboxes on the form.
-
-![Lighthouse for mobilde](docs/readme-img/lighthouse-results-mobile-reality-check-deployed.JPG)
+![Lighthouse for mobilde](docs/readme-img/lighthouse-result-mobile.JPG)
 
 ### Validator Testing 
 
 This one page site has been run through the W3C validator for HTML and the Jigsaw validator for CSS.
 
 - HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fkristofergab.github.io%2Freality-check%2F)
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fkristofergab.github.io%2Fadvanced-excel-file-merger%2F)
+  ![W3C validator pass image](docs/readme-img/validator-html.JPG)
+
 - CSS
-  - No errors were found when passing through the official [W3C (Jigsaw) validator](http://jigsaw.w3.org/css-validator/validator?lang=en&profile=css3svg&uri=https%3A%2F%2Fkristofergab.github.io%2Freality-check%2F&usermedium=all&vextwarning=&warning=1)
+  - No errors were found when passing through the official [W3C (Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fkristofergab.github.io%2Fadvanced-excel-file-merger%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+  ![W3C (Jigsaw) validator pass image](docs/readme-img/jiggsaw-validator.JPG)
 
 ### Known Bugs
 
-After testing on Safari a few bugs were discovered:
-- The sites logos inner radius is squared instead of round. This is because the css command outline is not yet released.
-- When rotating the scaling of the detailed section is not correct and the iframes overlap underlying section.
+- On mobile devices the verificaiton on fileformats is not working as intended which means that wrong formats can be loaded causing unpredicted behaviour.
 
 ### Unfixed Bugs
 
-Issues mentioned under Known Bugs section related to Safari is yet to be fixed. The outline issue is deemed acceptable. However, the overlapping issue is something that has to be handled in future release but accepted for now since it is fully functional in normal reading mode (not rotated).
+- Mobile fileformat verification.
 
 
 ### User Stories Testing
 
 - __First Time Visitors__
-  - *I want to get easy and quick information about a field that interests me.* The Summary section is perfect for newcomers to get a quick glance at the information and to decide on further reading.
-![Summary Section](docs/readme-img/summary-section-reality-check.JPG)
-  - *I want to understand what Reality Check is all about.* Landing page with welcoming text in combination with the summary section helps clarify this smoothly.
-![Landing Page](docs/readme-img/landing-page-universe-img-reality-check.JPG)
-  - *I want to easily navigate through the page and find the information that I like.* The fixed navbar is the key here which simplifies navigating throughout the websites different sections.
-![Nav Bar](docs/readme-img/navbar-reality-check.JPG)
+  - *I am in the need of collecting data from multiple excel-files and what a simple, quick and effective way of doing this.*
+  - When landing on this page a quick 4 step instruction is given with the tool right there at the bottom of the screen, already visible and ready to be used.
+![Landing page](docs/readme-img/landingpage.JPG)
+  - Following the 4 step method you can quickly access the tools potential by upploading your template file. After a few clicks it is easy to see that you can select the cells you want or remove what you did not intend do pick.
+![Template table](docs/readme-img/template-table.JPG)
+  - If more information is needed there is a more indepth explanation on the steps including an instruction video to help the user along
+  - When the cell selections are made it's easy to choose what files to implement this collection/merge on and then easily download the result:
+![New table after merge with download button](docs/readme-img/new-table-download.JPG)
 
 - __Returning Visitors__
-  - *I want to have the possibility to further my reading through other sources.* The included links from the summary section to wikipedia in combination of the iframe youtube videos in the detailed section is ensuring that other sources are incorporated.
-![Detailed Section](docs/readme-img/detailed-section-vr-reality-check.JPG)
-  - *I want to be able to see up-to-date information on the meet-ups that I would like to join.* The meet-up section ensures that users are able to easily pick up this information and note down what fits them most.
-![Meet-up Times](docs/readme-img/meet-up-section-reality-check.JPG)
-  - *I want to join in on the meet-ups that interests me.* The userform in connection to the meet-up section helps the users to easily join in on the meetings that fits their need and want to participate in. Clear requirements exist to ensure good UX and there are required fields in the form to make sure that the right information gets sent to the host.
+  - *I want to do more analysis and whant to use this tool again as last time.* Se steps under first time visitors. Built with easy access to the tool right at the top for returning visitors also in mind.
 
-![Join In](docs/readme-img/contact-form-reality-check.JPG)
+  - *I want to do even more advanced merging alternatives than before.* Many functionalities are possible to add over time to this tool but is today restricted to simply appending all selected cells to the A column. This will have to evolve over time since this projects timeline does not allow for further builds in order to move forward in the course.
+
+
 
 ### Full Testing
 
@@ -266,23 +229,22 @@ The website has been test on multiple devices with different screen sizes and re
 Devices tested on:
 - Desktop Display hp 24" screen
 - Large laptop with 20" screen
-- iPhone 11 Pro
 - Huawei P20 Pro
-- iPhone SE
-- iPhone 8
 - iPad Air 2
 
 Browsers tested on:
 - Chrome
 - Edge
 - Firefox
-- Safari
 
 Functionality tests:
 - All links have been tested for internal linking within the site and verified so that it takes the user to the correct section. All links work as expected.
-- The links to external websites has also been tested and they all open in a new tab and takes you to intended webpage, both for wikipedia links and for footer links.
-- All iframe videos play the intended content in the detailed section and is possible to start & stop as intended and can also be opened in new tab if larger viewing window is desired.
-- The form has been checked so that it is not possible to "Join In" without filling in the required fields - Name and email. The email input checks and makes sure that it is a valid address. The checkmarks can be filled in or left out according to the user wishes.
+- The form has been checked so that it is not possible to submit without filling in the required fields - Name and email. The email input checks and makes sure that it is a valid address. The feedback also requires to be filld with some text according to the user wishes.
+
+- This tool is able to handle a large amount of data and files in very little time. Tests has been made with various filesizes and quantities with very promising results. 
+![Large scale test result](docs/readme-img/largescaletest.JPG)
+- In this test we used over one thousand files and gathered data from over ten thousend cells - all done in under a second. 
+- This being said it is important to gather user feedback in order to get better understanding of problems that might arise. Such problems might involve very "heavy" or large files being used - this is not yet tested.
 
 ## Credits 
 ---
@@ -291,89 +253,57 @@ Functionality tests:
 
 In this section all the webpages that were used as help for the development of this site will be listed. First the link to the website will be presented and then the information what the site was used for explained right after the link.
 
-https://www.w3schools.com/css/css3_images.asp
-https://www.w3schools.com/css/css3_object-fit.asp
-https://www.w3schools.com/css/css_align.asp
-for images
+https://www.w3schools.com/tags/att_input_list.asp
+for list in HTML
 
-https://stackoverflow.com/questions/52037809/add-alpha-channel-to-hex-color-declared-on-css-variable
-for opacity on hex
+https://docs.sheetjs.com/docs/getting-started/installation/standalone
+https://code-boxx.com/javascript-excel-html-table/
+https://www.webslesson.info/2021/07/how-to-display-excel-data-in-html-table.html
+https://web.dev/read-files/#read-content
+js
+import excelfile using sheetsjs
 
-https://blog.logrocket.com/how-create-double-border-css/
-https://developer.mozilla.org/en-US/docs/Web/CSS/border
-for double borders
+https://stackoverflow.com/questions/5990725/how-to-delay-execution-in-between-the-following-in-my-javascript
+for delaying running code
 
-https://www.freecodecamp.org/news/how-to-center-anything-with-css-align-a-div-text-and-more/
-for centering div content
+https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_table_cells
+https://www.w3schools.com/jsref/coll_table_cells.asp
+for getting cells in rows for eventlistener
 
-https://stackoverflow.com/questions/36337086/my-youtube-video-wont-show-in-iframe
-for embedding youtube
+https://www.w3schools.com/jsref/met_element_remove.asp
+for removing html elements
 
-https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_stacked_form
-for styling forms
+https://stackoverflow.com/questions/21659888/find-and-remove-objects-in-an-array-based-on-a-key-value-in-javascript
+for finding and removing objects in an array vased on a key value
 
-Love Running project
-for Times section - copy and modify code for meet up,
-and for placement of FA script
+https://stackoverflow.com/questions/62259233/javascript-get-table-cell-content-on-click
+for querySelector to add eventlistener on all tabledata
 
-https://css-tricks.com/fixed-headers-on-page-links-and-overlapping-content-oh-my/
-for fixing fixed navbar scrolldown problem
+https://www.w3schools.com/jsref/jsref_tostring_string.asp
+for .toString method
 
-https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading
-for lazy loading
+https://stackoverflow.com/questions/24925336/set-html5-input-list-value-with-javascript
+for input datalist in javascript
 
-https://fontawesome.com/v4/accessibility/
-for area-hidden
+https://stackoverflow.com/questions/17001961/how-to-add-drop-down-list-select-programmatically
+for select list option using for loop for alphabet array
 
-https://css-tricks.com/lazy-load-embedded-youtube-videos/
-for srcdoc on iframe
-Code copied:
-`srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/Y8Wp3dafaMQ?autoplay=1><img src=https://img.youtube.com/vi/Y8Wp3dafaMQ/hqdefault.jpg alt='Video The Dark Knight Rises: What Went Wrong? – Wisecrack Edition'><span>▶</span></a>"`
+https://www.w3schools.com/html/tryit.asp?filename=tryhtml_form_mail
+for submitting form
 
-https://www.w3schools.com/Css/css3_mediaqueries_ex.asp
-for hiding img on media query
+https://stackoverflow.com/questions/9537838/div-height-100-and-expands-to-fit-content
+for overflow auto
 
-https://cloudconvert.com/jpg-to-webp
-for converting jpg to webp
+https://web.dev/lazy-loading-video/
+for preloading none (lazyloading)
 
-http://zuga.net/articles/html-heading-elements/
-for h3 size in rem
-
-https://www.w3schools.com/css/tryit.asp?filename=trycss_css_image_overlay_opacity
-for img hover overlay
-copied style code and modified
-
-https://stackoverflow.com/questions/1818249/form-with-no-action-and-where-enter-does-not-reload-page
-for form without action javascript
-javascript:void(0)
-
-https://medium.com/@aurelien.delogu/401-error-on-a-webmanifest-file-cb9e3678b9f3
-for crossreference on favicons to remove 401 error
-
-- The text for the Summary section was taken from Wikipedia:
-https://en.wikipedia.org/wiki/Virtual_reality
-https://en.wikipedia.org/wiki/Augmented_reality
-https://en.wikipedia.org/wiki/Mixed_reality
-
-- The text for the Detailed section was taken from an article written by Robert Sheldon
-https://www.techtarget.com/whatis/definition/virtual-reality
-for text description in detailed section
-
-- The icons used on the site were all taken from [Font Awesome](https://fontawesome.com/)
+https://stackoverflow.com/questions/1438722/thank-you-alert-upon-form-submission
+for onsubmit alert on form
 
 ### Media
 
-- All images used on the website are from the open source site https://www.pexels.com/ and extra credit given to the photographers kind enough to let us use these images for free:
-- Ali Pazani
-- Harsch Shivam
-- Jessica Lewis Creative
-- Michelangelo Buonarroti
-- Miriam Espacio
-- Moose Photos
-- Shvets Production
-- Tima Miroshnichenko
+- No external media used in the project so far
 
-Links to Youtube videos used:
-[Virtual reality](https://www.youtube.com/watch?v=i4Zt3JZejbg)
-[Augmented reality](https://www.youtube.com/watch?v=WxzcD04rwc8&t=2s)
-[Mixed reality](https://www.youtube.com/watch?v=uVAVSMyjWRg)
+-Credit to Wondershare DemoCreator that made the video on youtube on how to screenrecord using powerpoint!
+https://www.youtube.com/watch?v=3I8IzHa2rY4
+for recording desktop using powerpoint. Time 1:33
