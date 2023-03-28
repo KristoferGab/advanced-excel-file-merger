@@ -13,7 +13,7 @@
             <li><a href="#header-div">Home</a></li>
             <li><a href="#instructions-section">Instructions</a></li>
             <li><a href="#contact-section">Contact</a></li>
-            <li><a href="#">About the tool</a></li>
+            <li><a href="#about-the-tool">About the tool</a></li>
         </ul>
     </nav>
     <!----------- Header explaining the steps required to have this program run as intended --------------->
@@ -115,31 +115,49 @@
 
     <Section id="contact-section">
         <div>
-            <h2>Pleas let us know what you think</h2>
+            <h2 id="contact-heading">Please let us know what you think</h2>
+        </div>
+        <div>
             <p>Your contribution and opinions on this BETA release of <span><strong>Advanced Excel-file Merger</strong> tool</span> 
                 is crusial for its continious development. We are grateful for any feedback we can get so please feel free to use this 
-                form to leave yout comments and questions
+                form to leave your comments and/or questions on your experience.
             </p>
         </div>
-            <form action="POST">
-                <label for="fname">Your Name:</label>
-                <input type="text" required placeholder="John Doe">
-                <label for="email">Your Email:</label>
-                <input type="email" required placeholder="name@domain.com">
-                <label for="feedback">Feedback:</label>
-                <textarea name="feedback" id="feedback" cols="30" rows="10" required></textarea>
+        <div id="form">
+            <form action="mailto:kristofer.gabrielsson@gmail.com" method="POST" enctype="text/plain">
+                <label for="fname">Your Name: *</label>
+                <input type="text" required placeholder="John Doe"><br>
+                <label for="email">Your Email: *</label>
+                <input type="email" required placeholder="name@example.com"><br>
+                <label for="feedback">Feedback: *</label><br>
+                <textarea name="feedback" id="feedback" cols="30" rows="10" required></textarea><br>
+                <input type="submit" value="Send Feedback">
             </form>
+        </div>
     </Section>
 
     <section id="about-the-tool">
-        <h2>About this tool</h2>
-        <p>This tool is meant to help with merging selective data from multiple files in order to save tidious time spent opening and closing files manually. It is currently in a BEATA mode with very limited options in order to make sure that it is beeing tested. Its future developement will be heavy influenced by user feedback to improve it's usefullness. Future plans to implement involves:</p>
-        <ul>
+        <h2 id="about-heading">About this tool</h2>
+        <p>This tool is meant to help with merging selective data from multiple files in order to save tidious time spent opening and closing files manually. 
+            It is currently in a BEATA mode with very limited options in order to make sure that it is beeing tested. Its future developement will be heavy influenced 
+            by user feedback to improve it's usefullness. Future plans to implement involves:</p>
+        <ul id="about-list">
             <li>Decide what column or row to append the data as seen in the display window today</li>
             <li>Making mathematical operations between cells as per user wishes</li>
             <li>Include intelligens such as find the last value in a row or column instead of chosing a static cell</li>
+            <li>Overall design improvements on the site</li>
         </ul>
     </section>
+
+    <footer>
+        <h2>Advanced Excel-file Merger</h2>
+        <ul>
+            <li><a href="#header-div">Home</a></li>
+            <li><a href="#instructions-section">Instructions</a></li>
+            <li><a href="#contact-section">Contact</a></li>
+            <li><a href="#about-the-tool">About the tool</a></li>
+        </ul>
+    </footer>
 
     <!-- Official SheetJS CE Docs library at https://sheetsjs.com -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
