@@ -188,11 +188,13 @@ This one page site has been run through the W3C validator for HTML and the Jigsa
 
 - HTML
   - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fkristofergab.github.io%2Fadvanced-excel-file-merger%2F)
-  ![W3C validator pass image](docs/readme-img/validator-html.JPG)
+
+![W3C validator pass image](docs/readme-img/validator-html.JPG)
 
 - CSS
   - No errors were found when passing through the official [W3C (Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fkristofergab.github.io%2Fadvanced-excel-file-merger%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-  ![W3C (Jigsaw) validator pass image](docs/readme-img/jiggsaw-validator.JPG)
+
+![W3C (Jigsaw) validator pass image](docs/readme-img/jiggsaw-validator.JPG)
 
 ### Known Bugs
 
@@ -213,6 +215,7 @@ This one page site has been run through the W3C validator for HTML and the Jigsa
 ![Template table](docs/readme-img/template-table.JPG)
   - If more information is needed there is a more indepth explanation on the steps including an instruction video to help the user along
   - When the cell selections are made it's easy to choose what files to implement this collection/merge on and then easily download the result:
+
 ![New table after merge with download button](docs/readme-img/new-table-download.JPG)
 
 - __Returning Visitors__
