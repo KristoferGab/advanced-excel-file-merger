@@ -18,6 +18,7 @@ fileInput.addEventListener('change', (event) => {
 });
 
 uploadBtn.addEventListener('click', () => {
+  // Set alert if no file was selected before pressing the button
   if (!selectedFile) {
     alert('Please select a file first!');
     return;
@@ -199,6 +200,7 @@ filesInput.addEventListener('change', (event) => {
 });
 
 mergeBtn.addEventListener('click', () => {
+  // Set alert if no file was selected before pressing the button
   if (!selectedFiles) {
     alert('Please select merge files first!');
     return;
@@ -264,7 +266,15 @@ function displayExcelData(workbook, filename) {
 
 // Download the new excel table from the merged files to a new excel workbook
 let downloadBtn = document.getElementById('download-btn');
-  downloadBtn.addEventListener('click', Table2XLSX);
+  downloadBtn.addEventListener('click', () => {
+    // Set alert if no files were selected before pressing the button
+    if (!selectedFiles) {
+      alert('Please select merge files first!');
+      return;
+    }
+    Table2XLSX();
+  });
+
 /* Create worksheet from HTML DOM TABLE */
 function Table2XLSX() {
   // Copied from https://docs.sheetjs.com/docs/ "Export an HTML Table to Excel XLSX"

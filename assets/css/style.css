@@ -60,6 +60,24 @@ h2 {
     margin-bottom: 10px;
 }
 
+input[type="file"] {
+    background-color: #217346;
+    color: #fafafa;
+    cursor: pointer;
+}
+input[type=button], .btn {
+    background-color: #12478c;
+    color: #fafafa;
+    font-size: larger;
+    border: 2px solid #e9ec0c;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #217346;
+}
+
 /* Table colors copied from  https://www.w3schools.com/css/css_table_style.asp  */
 tr:nth-child(even) {background-color: #fafafa;}
 thead {
