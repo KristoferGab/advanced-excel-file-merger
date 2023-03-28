@@ -139,7 +139,7 @@ h4 {
     text-align: center;
     float: left;
     width: 90%;
-    height: 300px;
+    height: fit-content;
     display: block;
     padding: 30px 10px;
     margin-right: 5%;
@@ -150,9 +150,13 @@ h4 {
     outline: 2px solid #fafafa;
     outline-offset: -5px;
 }
-
-#instructions-section {
-    height: 1850px;
+.instruction-steps h2 {
+    margin-top: 0px;
+}
+ /* Creadit to https://stackoverflow.com/questions/9537838/div-height-100-and-expands-to-fit-content and João Pimentel Ferreira */
+#instructions-section, #contact-section {
+    display: block;
+    overflow: auto;
 }
 
 #instructions-heading, #contact-heading, #about-heading {
@@ -165,6 +169,11 @@ h4 {
     border-radius: 10px;
     outline: 2px solid #fafafa;
     outline-offset: -5px;
+}
+
+#instruction-video {
+    width: 50%;
+    height: 50%;
 }
 
 span {

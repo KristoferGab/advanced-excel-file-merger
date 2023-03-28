@@ -36,7 +36,7 @@
             </div>
             <div class="header-steps">
                 <h2>Step 4</h2>
-                <p>When you are satisfied  with the result just go ahead and download the data as a new Excel file! Happy merging!</p>
+                <p>When you are satisfied  with the result just go ahead and download the data as a new Excel file!<br>Happy merging!</p>
             </div>
         </div>
     </header>
@@ -92,47 +92,70 @@
     </section>
 
     <section id="instructions-section">
-        <div>
-            <h2 id="instructions-heading">Instructions</h2>
-        </div>
-        <div class="instruction-steps">
-            <h2>Step 1</h2>
-            <p>First you choose a "template" file that you want to work with.</p>
-        </div>
-        <div class="instruction-steps">
-            <h2>Step 2</h2>
-            <p>Select what cells you wish to gather data from and how you want them arranged in a new file</p>
-        </div>
-        <div class="instruction-steps">
-            <h2>Step 3</h2>
-            <p>Chose the files you want to merge according to your merging alternatives chosen during Step 2</p>
-        </div>
-        <div class="instruction-steps">
-            <h2>Step 4</h2>
-            <p>When you are satisfied  with the result just go ahead and download the data as a new Excel file! Happy merging!</p>
+        <div id="instructions-div">
+            <div>
+                <h2 id="instructions-heading">Instructions</h2>
+            </div>
+            <div class="instruction-steps">
+                <h2>Step 1</h2>
+                <p>First you choose a "template-file" that you want to work with.</p>
+                <img src="assets/images/step1.JPG" alt="Picture showing the 'Chose file' button and the 'Upload Template' button in step one of the process">
+                <p>Don't forget to press the "Upload Template" button</p>
+                <img src="assets/images/step1.2.JPG" alt="Picture showing the 'Chose file' button and the 'Upload Template' button in step one of the process with a file chosen">
+            </div>
+            <div class="instruction-steps">
+                <h2>Step 2</h2>
+                <p>Select what cells you wish to gather data from. NOTE that the order you pick the cells matters!</p>
+                <img src="assets/images/step2.JPG" alt="Picture showing an example of a table with selected cells">
+                <p>How you want them arranged in the new file is shown to the right of the table. (This function is currently not available!)</p>
+                <img src="assets/images/step2.2.JPG" alt="Picture showing values of selected cells and their future options for appending to columns or rows">
+            </div>
+            <div class="instruction-steps">
+                <h2>Step 3</h2>
+                <p>Chose the files you want to merge according to your merging alternatives chosen during Step 2.<br>
+                    NOTE that this tool can handle a large amount of files and data but please do consider that this is still in BEATA testing.<br>
+                    If you notice any abnormalities or problems please send us some feedback in the for below.</p>
+                <img src="assets/images/step3.JPG" alt="Picture showing the 'Chose files' button and the 'Let's Merge' button in step one of the process">
+                <p>Don't forget to press the "Let's Merge" button.</p>
+                <img src="assets/images/step3.2.JPG" alt="Picture showing the 'Chose files' button and the 'Let's Merge' button in step one of the process with 156 files chosen">
+            </div>
+            <div class="instruction-steps">
+                <h2>Step 4</h2>
+                <p>When you are satisfied  with the result just go ahead and scroll down and inspect your result.</p>
+                <img src="assets/images/step4.JPG" alt="Picture showing the 'Chose file' button and the 'Upload Template' button in step one of the process">
+                <p>Then press download and a new excel-file will be created and downloaded to your device.</p>
+                <img src="assets/images/step4.2.JPG" alt="Picture showing the 'Chose file' button and the 'Upload Template' button in step one of the process with a file chosen">
+                <p>Happy Merging!</p>
+            </div>
+            <div class="instruction-steps">
+                <h2>Instruction video</h2>
+                <video src="assets/video/Instructionvideo.mp4" alt="Instruction video .mp4 format" id="instruction-video" controls preload="none" poster="assets/images/instructionvideoimg.JPG"></video>
+            </div>
         </div>
     </section>
 
     <Section id="contact-section">
-        <div>
-            <h2 id="contact-heading">Please let us know what you think</h2>
-        </div>
-        <div>
-            <p>Your contribution and opinions on this BETA release of <span><strong>Advanced Excel-file Merger</strong> tool</span> 
-                is crusial for its continious development. We are grateful for any feedback we can get so please feel free to use this 
-                form to leave your comments and/or questions on your experience.
-            </p>
-        </div>
-        <div id="form">
-            <form action="mailto:kristofer.gabrielsson@gmail.com" method="POST" enctype="text/plain">
-                <label for="fname">Your Name: *</label>
-                <input type="text" required placeholder="John Doe"><br>
-                <label for="email">Your Email: *</label>
-                <input type="email" required placeholder="name@example.com"><br>
-                <label for="feedback">Feedback: *</label><br>
-                <textarea name="feedback" id="feedback" cols="30" rows="10" required></textarea><br>
-                <input type="submit" value="Send Feedback">
-            </form>
+        <div id="contact-section">
+            <div>
+                <h2 id="contact-heading">Please let us know what you think</h2>
+            </div>
+            <div>
+                <p>Your contribution and opinions on this BETA release of <span><strong>Advanced Excel-file Merger</strong> tool</span> 
+                    is crusial for its continious development. We are grateful for any feedback we can get so please feel free to use this 
+                    form to leave your comments and/or questions on your experience.
+                </p>
+            </div>
+            <div id="form">
+                <form action="mailto:kristofer.gabrielsson@gmail.com" method="POST" enctype="text/plain">
+                    <label for="fname">Your Name: *</label>
+                    <input type="text" required placeholder="John Doe"><br>
+                    <label for="email">Your Email: *</label>
+                    <input type="email" required placeholder="name@example.com"><br>
+                    <label for="feedback">Feedback: *</label><br>
+                    <textarea name="feedback" id="feedback" cols="30" rows="10" required></textarea><br>
+                    <input type="submit" value="Send Feedback">
+                </form>
+            </div>
         </div>
     </Section>
 
