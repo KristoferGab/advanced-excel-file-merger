@@ -6,7 +6,7 @@ a {
     border-left: #fafafa 2px solid;
     padding: 0 5px;
 }
-
+ /* Set style for navigation bar */
 nav {
     position: absolute;
     right: 2%;
@@ -22,6 +22,7 @@ nav > ul > li, footer > ul > li {
     float: left;
 }
 
+/* Main header */
 h1 {
     background-color: #217346;
     color: #fafafa;
@@ -31,6 +32,7 @@ h1 {
     padding-top: 50px;
 }
 
+/* The four steps needed for this tool */
 .header-steps {
     background-color: #217346;
     color: #fafafa;
@@ -56,10 +58,11 @@ h2 {
     font-size: 2rem;
 }
 
+/* Upploading section */
 .file-selectors {
     margin-bottom: 10px;
 }
-
+/* Set the upload buttons with style to fit the page */
 input[type="file"] {
     background-color: #217346;
     color: #fafafa;
@@ -85,6 +88,7 @@ thead {
     color: #fafafa;
   }
 
+  /* Show the sections where the merge options are  */
 
 .merge-options {
     text-align: center;
@@ -111,7 +115,7 @@ thead {
     margin-bottom: 50px;
     overflow: auto;
 }
-
+/* Chosen valueas are displayed as cells */
 h4 {
     border: 1px solid black;
     margin-top: 1.4px;
@@ -132,7 +136,7 @@ h4 {
 }
 
 
-
+/* Detailed instructions section with images and video in four + 1 steps */
 .instruction-steps {
     background-color: #217346;
     color: #fafafa;
@@ -163,6 +167,7 @@ img {
     width: 50%;
 }
 
+/* Separate sections with headers in different color */
 #instructions-heading, #contact-heading, #about-heading {
     background-color: #12478c;
     color: #fafafa;
@@ -228,11 +233,11 @@ input[type=submit] {
     width: 100%;
   }
 
-
+/* About the tool section */
   #about-list {
     font-size: 1.5rem;
   }
-
+/* footer */
   footer {
     height: 100px;
     color: #fafafa;
